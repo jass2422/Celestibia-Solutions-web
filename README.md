@@ -11,6 +11,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
 [🌐 Live Demo](https://celestibia.lovable.app) • [📖 Documentation](#features) • [🚀 Getting Started](#getting-started)
 
@@ -27,11 +28,12 @@ Celestibia is a modern, enterprise-grade cloud solutions platform offering compr
 - 🏠 **Beautiful Landing Page** - Engaging hero section with animated gradients
 - 📊 **Services Showcase** - Detailed service pages for Cloud, DevOps, AI/ML, Security & more
 - 🏢 **Industry Solutions** - Tailored solutions for Healthcare, Finance, Retail, and more
-- 📝 **Blog System** - Dynamic blog with individual post pages
-- 📞 **Contact Form** - Professional contact page with form validation
-- 🔐 **Dual Authentication** - Separate User and Admin login systems
+- 📝 **Blog System** - Dynamic blog with CMS, individual post pages, and SEO meta tags
+- 📞 **Contact Form** - Professional contact page with database storage
+- 🔐 **Secure Admin Authentication** - Role-based admin access with Supabase Auth
 - 📱 **Fully Responsive** - Optimized for all devices and screen sizes
 - 🎨 **Dark/Light Mode Ready** - Theme-aware design system
+- 🗄️ **Persistent Database** - All data stored securely in cloud database
 
 ## 🛠️ Tech Stack
 
@@ -41,6 +43,14 @@ Celestibia is a modern, enterprise-grade cloud solutions platform offering compr
 | **React** | 18.3.1 | UI Component Library |
 | **TypeScript** | 5.0+ | Type-Safe Development |
 | **Vite** | 5.0+ | Build Tool & Dev Server |
+
+### Backend & Database
+| Technology | Purpose |
+|------------|---------|
+| **Supabase** | Backend-as-a-Service |
+| **PostgreSQL** | Relational Database |
+| **Row Level Security** | Data Protection |
+| **Supabase Auth** | Secure Authentication |
 
 ### Styling & UI
 | Technology | Purpose |
@@ -86,7 +96,9 @@ src/
 │   ├── AdminAuthContext.tsx
 │   └── UserAuthContext.tsx
 ├── hooks/              # Custom React hooks
-├── lib/                # Utility functions
+├── integrations/       # Supabase client & types
+│   └── supabase/
+├── lib/                # Utility functions & storage
 ├── pages/              # Page components
 │   ├── services/       # Service detail pages
 │   ├── Index.tsx
@@ -131,6 +143,33 @@ npm run build
 bun run build
 ```
 
+## 🔒 Admin Setup
+
+1. Navigate to `/admin/signup` to create your first admin account
+2. The first user to sign up will automatically be granted admin privileges
+3. Login at `/admin` to access the admin dashboard
+4. From the dashboard you can:
+   - View and manage contact form submissions
+   - Create, edit, and delete blog posts
+   - Manage SEO meta tags for blog content
+
+## 🗄️ Database Schema
+
+### Tables
+
+| Table | Purpose |
+|-------|---------|
+| `blogs` | Blog posts with SEO metadata |
+| `contacts` | Contact form submissions |
+| `user_roles` | Admin role assignments |
+
+### Security
+
+- **Row Level Security (RLS)** enabled on all tables
+- **Public read access** for blogs (for website visitors)
+- **Admin-only access** for contacts and blog management
+- **Secure authentication** via Supabase Auth
+
 ## 🎨 Design System
 
 The project uses a comprehensive design system with:
@@ -162,12 +201,14 @@ Visit the live application: **[celestibia.lovable.app](https://celestibia.lovabl
 | Contact | `/contact` | Contact form and information |
 | Case Studies | `/case-studies` | Client success stories |
 
-## 🔒 Authentication
+### Admin Routes
 
-The platform features dual authentication:
-
-- **User Login** (`/login`) - For regular users
-- **Admin Login** (`/admin/login`) - For administrators with dashboard access
+| Page | Route | Description |
+|------|-------|-------------|
+| Admin Login | `/admin` | Admin authentication |
+| Admin Signup | `/admin/signup` | Create admin account |
+| Admin Dashboard | `/admin/dashboard` | Manage blogs & contacts |
+| Forgot Password | `/admin/forgot-password` | Password reset |
 
 ## 📦 Key Dependencies
 
@@ -177,6 +218,7 @@ The platform features dual authentication:
   "react-router-dom": "^6.30.1",
   "framer-motion": "^12.23.26",
   "@tanstack/react-query": "^5.83.0",
+  "@supabase/supabase-js": "^2.x",
   "tailwindcss": "latest",
   "lucide-react": "^0.462.0"
 }
