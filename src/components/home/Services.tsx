@@ -33,25 +33,25 @@ const services = [
     color: "from-green-500 to-emerald-500",
   },
   {
-    icon: Shield,
-    title: "Security Services",
-    description: "Cloud Security, DevSecOps, VAPT, Compliance Automation, and Managed Detection & Response.",
-    href: "/services/security",
-    color: "from-red-500 to-orange-500",
-  },
-  {
     icon: Brain,
-    title: "AI & ML Services",
+    title: "AI & Machine Learning",
     description: "AI-Powered Chatbots, ML Model Development, Computer Vision, NLP, and AI Strategy Consulting.",
     href: "/services/ai-ml",
     color: "from-violet-500 to-purple-500",
   },
   {
     icon: Monitor,
-    title: "App Modernization",
+    title: "Application Services",
     description: "Monolith to Microservices, Application Replatforming, and Performance Monitoring.",
-    href: "/services",
+    href: "/services/application",
     color: "from-orange-500 to-yellow-500",
+  },
+  {
+    icon: Shield,
+    title: "Security Services",
+    description: "Cloud Security, DevSecOps, VAPT, Compliance Automation, and Managed Detection & Response.",
+    href: "/services/security",
+    color: "from-red-500 to-orange-500",
   },
 ];
 

@@ -11,6 +11,12 @@ import CaseStudies from "./pages/CaseStudies";
 import Industries from "./pages/Industries";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
+import CloudServices from "./pages/services/CloudServices";
+import DevOpsServices from "./pages/services/DevOpsServices";
+import DataEngineering from "./pages/services/DataEngineering";
+import AIMLServices from "./pages/services/AIMLServices";
+import ApplicationServices from "./pages/services/ApplicationServices";
+import SecurityServices from "./pages/services/SecurityServices";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +30,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/services/*" element={<Services />} />
+          <Route path="/services/cloud" element={<CloudServices />} />
+          <Route path="/services/devops" element={<DevOpsServices />} />
+          <Route path="/services/data-engineering" element={<DataEngineering />} />
+          <Route path="/services/ai-ml" element={<AIMLServices />} />
+          <Route path="/services/application" element={<ApplicationServices />} />
+          <Route path="/services/security" element={<SecurityServices />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/industries" element={<Industries />} />
