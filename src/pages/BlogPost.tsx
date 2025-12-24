@@ -3,39 +3,62 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Calendar, User, Clock, ArrowLeft, Tag } from "lucide-react";
+import { Calendar, User, Clock, ArrowLeft, Tag, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { getBlogs, BlogPost as BlogPostType } from "@/lib/storage";
+import { getBlogBySlug, getBlogs, BlogPost as BlogPostType } from "@/lib/storage";
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [post, setPost] = useState<BlogPostType | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<BlogPostType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const blogs = getBlogs();
-    const foundPost = blogs.find((b) => b.slug === slug);
-    
-    if (foundPost) {
-      setPost(foundPost);
-      // Get related posts from same category
-      const related = blogs
-        .filter((b) => b.category === foundPost.category && b.id !== foundPost.id)
-        .slice(0, 3);
-      setRelatedPosts(related);
-    } else {
-      navigate("/blog");
-    }
+    const fetchPost = async () => {
+      if (!slug) {
+        navigate("/blog");
+        return;
+      }
+
+      const foundPost = await getBlogBySlug(slug);
+      
+      if (foundPost) {
+        setPost(foundPost);
+        // Get related posts from same category
+        const allBlogs = await getBlogs();
+        const related = allBlogs
+          .filter((b) => b.category === foundPost.category && b.id !== foundPost.id)
+          .slice(0, 3);
+        setRelatedPosts(related);
+      } else {
+        navigate("/blog");
+      }
+      setIsLoading(false);
+    };
+
+    fetchPost();
   }, [slug, navigate]);
+
+  if (isLoading) {
+    return (
+      <main className="min-h-screen">
+        <Header />
+        <div className="pt-32 pb-20 flex items-center justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-coral" />
+        </div>
+        <Footer />
+      </main>
+    );
+  }
 
   if (!post) {
     return (
       <main className="min-h-screen">
         <Header />
         <div className="pt-32 pb-20 flex items-center justify-center">
-          <div className="animate-pulse text-muted-foreground">Loading...</div>
+          <div className="text-muted-foreground">Post not found</div>
         </div>
         <Footer />
       </main>
@@ -89,7 +112,7 @@ const BlogPostPage = () => {
               </span>
               <span className="flex items-center gap-2">
                 <Clock className="w-5 h-5" />
-                {post.readTime}
+                {post.read_time}
               </span>
             </div>
           </motion.div>
@@ -230,7 +253,7 @@ const BlogPostPage = () => {
                         {relatedPost.title}
                       </h3>
                       <p className="text-sm text-muted-foreground mt-2">
-                        {relatedPost.readTime}
+                        {relatedPost.read_time}
                       </p>
                     </Link>
                   ))}
