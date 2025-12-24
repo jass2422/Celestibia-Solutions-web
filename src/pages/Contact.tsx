@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { saveContact } from "@/lib/storage";
 
 const contactInfo = [
   {
@@ -50,8 +51,11 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Save to localStorage
+    saveContact(formData);
+
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     toast({
       title: "Message Sent!",

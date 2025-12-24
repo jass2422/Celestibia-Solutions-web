@@ -1,69 +1,25 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Calendar, User, ArrowRight, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const blogPosts = [
-  {
-    title: "Best Practices for Cloud Migration in 2024",
-    excerpt: "Learn the key strategies and common pitfalls to avoid when migrating your enterprise workloads to the cloud.",
-    author: "Cloud Team",
-    date: "Dec 20, 2024",
-    readTime: "8 min read",
-    category: "Cloud",
-    slug: "cloud-migration-best-practices-2024",
-  },
-  {
-    title: "Kubernetes Security: A Comprehensive Guide",
-    excerpt: "Everything you need to know about securing your Kubernetes clusters in production environments.",
-    author: "DevOps Team",
-    date: "Dec 15, 2024",
-    readTime: "12 min read",
-    category: "Security",
-    slug: "kubernetes-security-guide",
-  },
-  {
-    title: "Building Real-Time Data Pipelines with Apache Kafka",
-    excerpt: "A step-by-step guide to implementing scalable real-time data streaming architectures.",
-    author: "Data Engineering",
-    date: "Dec 10, 2024",
-    readTime: "10 min read",
-    category: "Data",
-    slug: "real-time-data-pipelines-kafka",
-  },
-  {
-    title: "DevOps Automation: From CI/CD to GitOps",
-    excerpt: "How to evolve your DevOps practices from traditional CI/CD to modern GitOps workflows.",
-    author: "DevOps Team",
-    date: "Dec 5, 2024",
-    readTime: "7 min read",
-    category: "DevOps",
-    slug: "devops-automation-gitops",
-  },
-  {
-    title: "AI-Powered Customer Support: Implementation Guide",
-    excerpt: "How to build and deploy intelligent chatbots that actually improve customer satisfaction.",
-    author: "AI Team",
-    date: "Nov 28, 2024",
-    readTime: "9 min read",
-    category: "AI",
-    slug: "ai-powered-customer-support",
-  },
-  {
-    title: "Cost Optimization Strategies for AWS",
-    excerpt: "Proven techniques to reduce your AWS bill by 30% without sacrificing performance.",
-    author: "Cloud Team",
-    date: "Nov 20, 2024",
-    readTime: "6 min read",
-    category: "Cloud",
-    slug: "aws-cost-optimization",
-  },
-];
+import { getBlogs, BlogPost } from "@/lib/storage";
 
 const categories = ["All", "Cloud", "DevOps", "Security", "Data", "AI"];
 
 const Blog = () => {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  useEffect(() => {
+    setBlogPosts(getBlogs());
+  }, []);
+
+  const filteredPosts = selectedCategory === "All" 
+    ? blogPosts 
+    : blogPosts.filter(post => post.category === selectedCategory);
+
   return (
     <main className="min-h-screen">
       <Header />
@@ -105,8 +61,9 @@ const Blog = () => {
             {categories.map((category) => (
               <button
                 key={category}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-                  category === "All"
+                  category === selectedCategory
                     ? "bg-gradient-primary text-primary-foreground"
                     : "bg-secondary text-foreground hover:bg-coral hover:text-primary-foreground"
                 }`}
@@ -118,7 +75,7 @@ const Blog = () => {
 
           {/* Blog Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
+            {filteredPosts.map((post, index) => (
               <motion.article
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
