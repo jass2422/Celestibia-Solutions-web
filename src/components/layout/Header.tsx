@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
+import { useUserAuth } from "@/contexts/UserAuthContext";
 import logo from "@/assets/logo.jpeg";
 
 const navItems = [
@@ -42,10 +43,16 @@ export const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const { isAdmin, logout } = useAdminAuth();
+  const { isAdmin, logout: adminLogout } = useAdminAuth();
+  const { user, isAuthenticated, logout: userLogout } = useUserAuth();
 
-  const handleLogout = () => {
-    logout();
+  const handleAdminLogout = () => {
+    adminLogout();
+    navigate("/");
+  };
+
+  const handleUserLogout = () => {
+    userLogout();
     navigate("/");
   };
 
@@ -128,7 +135,33 @@ export const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
-            {isAdmin ? (
+            {isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="flex items-center gap-2 p-1 rounded-full hover:bg-secondary transition-colors">
+                    <Avatar className="h-9 w-9 border-2 border-coral">
+                      <AvatarFallback className="bg-gradient-accent text-primary-foreground font-semibold">
+                        {user?.name?.charAt(0).toUpperCase() || "U"}
+                      </AvatarFallback>
+                    </Avatar>
+                    <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56 bg-card border border-border z-50">
+                  <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium">{user?.name}</p>
+                      <p className="text-xs text-muted-foreground">{user?.email}</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleUserLogout} className="cursor-pointer text-destructive focus:text-destructive">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : isAdmin ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="flex items-center gap-2 p-1 rounded-full hover:bg-secondary transition-colors">
@@ -167,7 +200,7 @@ export const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-destructive focus:text-destructive">
+                  <DropdownMenuItem onClick={handleAdminLogout} className="cursor-pointer text-destructive focus:text-destructive">
                     <LogOut className="mr-2 h-4 w-4" />
                     Logout
                   </DropdownMenuItem>
@@ -175,8 +208,8 @@ export const Header = () => {
               </DropdownMenu>
             ) : (
               <Button variant="outline" size="sm" asChild>
-                <Link to="/admin">
-                  <LogIn className="w-4 h-4 mr-1" />
+                <Link to="/login">
+                  <User className="w-4 h-4 mr-1" />
                   Login
                 </Link>
               </Button>
@@ -233,7 +266,25 @@ export const Header = () => {
                   )}
                 </div>
               ))}
-              {isAdmin ? (
+              {isAuthenticated ? (
+                <div className="mt-4 p-4 rounded-lg bg-secondary/50">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Avatar className="h-10 w-10 border-2 border-coral">
+                      <AvatarFallback className="bg-gradient-accent text-primary-foreground font-semibold">
+                        {user?.name?.charAt(0).toUpperCase() || "U"}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="font-medium text-sm">{user?.name}</p>
+                      <p className="text-xs text-muted-foreground">{user?.email}</p>
+                    </div>
+                  </div>
+                  <Button variant="ghost" className="w-full justify-start text-destructive" onClick={handleUserLogout}>
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Logout
+                  </Button>
+                </div>
+              ) : isAdmin ? (
                 <div className="mt-4 p-4 rounded-lg bg-secondary/50">
                   <div className="flex items-center gap-3 mb-4">
                     <Avatar className="h-10 w-10 border-2 border-coral">
@@ -253,7 +304,7 @@ export const Header = () => {
                         Dashboard
                       </Link>
                     </Button>
-                    <Button variant="ghost" className="w-full justify-start text-destructive" onClick={handleLogout}>
+                    <Button variant="ghost" className="w-full justify-start text-destructive" onClick={handleAdminLogout}>
                       <LogOut className="w-4 h-4 mr-2" />
                       Logout
                     </Button>
@@ -261,9 +312,9 @@ export const Header = () => {
                 </div>
               ) : (
                 <Button variant="outline" className="w-full mt-4" asChild>
-                  <Link to="/admin">
-                    <LogIn className="w-4 h-4 mr-2" />
-                    Admin Login
+                  <Link to="/login">
+                    <User className="w-4 h-4 mr-2" />
+                    Login
                   </Link>
                 </Button>
               )}
