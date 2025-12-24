@@ -138,7 +138,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} Celestibia Solutions Pvt. Ltd. All rights reserved.
+            © 2026 Celestibia Solutions Pvt. Ltd. All rights reserved.
           </p>
           <p className="text-primary-foreground/60 text-sm">
             Shaping the future, one solution at a time.
