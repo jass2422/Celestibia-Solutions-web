@@ -51,24 +51,30 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Save to localStorage
-    saveContact(formData);
+    // Save to database
+    const result = await saveContact(formData);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    if (result) {
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
 
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        message: "",
+      });
+    } else {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    }
 
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      message: "",
-    });
     setIsSubmitting(false);
   };
 
