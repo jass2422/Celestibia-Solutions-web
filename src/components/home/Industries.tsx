@@ -9,6 +9,7 @@ import {
   Landmark,
   Plane
 } from "lucide-react";
+import { useABTest } from "@/hooks/useABTest";
 
 const industries = [
   { icon: Building2, name: "Banking & Finance", color: "bg-blue-500/10 text-blue-600" },
@@ -22,6 +23,9 @@ const industries = [
 ];
 
 export const Industries = () => {
+  const { getVariantValue } = useABTest('industries_headline');
+  const headline = getVariantValue() || 'Transforming Industries with Cloud Innovation';
+
   return (
     <section className="py-24 bg-gradient-warm text-primary-foreground overflow-hidden relative">
       {/* Decorative Elements */}
@@ -43,8 +47,17 @@ export const Industries = () => {
             Industries We Serve
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Transforming Industries with{" "}
-            <span className="bg-gradient-to-r from-coral via-orange to-coral-light bg-clip-text text-transparent">Cloud Innovation</span>
+            {headline.includes('Transforming') ? (
+              <>
+                Transforming Industries with{" "}
+                <span className="bg-gradient-to-r from-coral via-orange to-coral-light bg-clip-text text-transparent">Cloud Innovation</span>
+              </>
+            ) : (
+              <>
+                Industries We{" "}
+                <span className="bg-gradient-to-r from-coral via-orange to-coral-light bg-clip-text text-transparent">Empower</span>
+              </>
+            )}
           </h2>
           <p className="text-lg text-primary-foreground/70">
             Our solutions power digital transformation across diverse sectors, 

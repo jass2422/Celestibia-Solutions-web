@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Cloud, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useABTest } from "@/hooks/useABTest";
 
 const floatingIcons = [
   { Icon: Cloud, delay: 0, position: "top-20 left-[10%]" },
@@ -10,6 +11,12 @@ const floatingIcons = [
 ];
 
 export const Hero = () => {
+  const { getVariantValue: getHeadline, trackConversion: trackHeadlineView } = useABTest('hero_headline');
+  const { getVariantValue: getCtaText, trackConversion: trackCtaClick } = useABTest('hero_cta');
+
+  const headlineText = getHeadline() || 'Innovative Cloud Solutions for a Connected World';
+  const ctaText = getCtaText() || 'Get Started';
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20">
       {/* Background Pattern */}
@@ -62,11 +69,22 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            onAnimationComplete={() => trackHeadlineView('view')}
             className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
           >
-            Innovative{" "}
-            <span className="text-gradient">Cloud Solutions</span>{" "}
-            for a Connected World
+            {headlineText.includes('Cloud Solutions') ? (
+              <>
+                Innovative{" "}
+                <span className="text-gradient">Cloud Solutions</span>{" "}
+                for a Connected World
+              </>
+            ) : (
+              <>
+                Transform Your Business with{" "}
+                <span className="text-gradient">Enterprise Cloud</span>{" "}
+                Solutions
+              </>
+            )}
           </motion.h1>
 
           {/* Subheading */}
@@ -88,9 +106,9 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button variant="hero" size="xl" asChild>
+            <Button variant="hero" size="xl" asChild onClick={() => trackCtaClick('click')}>
               <Link to="/contact" className="flex items-center gap-2">
-                Get Started
+                {ctaText}
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>

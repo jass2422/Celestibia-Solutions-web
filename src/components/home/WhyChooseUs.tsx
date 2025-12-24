@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Rocket, Users, Award, Clock, HeartHandshake } from "lucide-react";
+import { useABTest } from "@/hooks/useABTest";
 
 const reasons = [
   {
@@ -35,6 +36,9 @@ const reasons = [
 ];
 
 export const WhyChooseUs = () => {
+  const { getVariantValue } = useABTest('why_choose_headline');
+  const headline = getVariantValue() || 'Technology Should Simplify Business';
+
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Background Elements */}
@@ -53,9 +57,19 @@ export const WhyChooseUs = () => {
               Why Choose Us
             </span>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              Technology Should{" "}
-              <span className="text-gradient">Simplify</span>{" "}
-              Business
+              {headline.includes('Simplify') ? (
+                <>
+                  Technology Should{" "}
+                  <span className="text-gradient">Simplify</span>{" "}
+                  Business
+                </>
+              ) : (
+                <>
+                  Why{" "}
+                  <span className="text-gradient">Partner</span>{" "}
+                  With Us?
+                </>
+              )}
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               At Celestibia Solutions, we believe in solutions that scale with growth, 
