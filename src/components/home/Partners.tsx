@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link2 } from "lucide-react";
 import veeamLogo from "@/assets/veeam-logo.jpg";
 import { AWSLogo, AzureLogo, GCPLogo, GitLabLogo } from "@/components/logos/TechLogos";
+import { useABTest } from "@/hooks/useABTest";
 
 const partners = [
   {
@@ -33,6 +34,9 @@ const partners = [
 ];
 
 export const Partners = () => {
+  const { getVariantValue } = useABTest('partners_headline');
+  const headline = getVariantValue() || 'Partners & Certifications';
+
   return (
     <section className="py-20 lg:py-28 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
@@ -47,7 +51,7 @@ export const Partners = () => {
             <Link2 className="w-7 h-7 text-primary" />
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Partners & Certifications
+            {headline}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Recognized for technical excellence and certified expertise across major cloud platforms.

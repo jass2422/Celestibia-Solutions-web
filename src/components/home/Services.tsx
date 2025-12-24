@@ -9,6 +9,7 @@ import {
   Monitor,
   ArrowUpRight
 } from "lucide-react";
+import { useABTest } from "@/hooks/useABTest";
 
 const services = [
   {
@@ -75,6 +76,9 @@ const itemVariants = {
 };
 
 export const Services = () => {
+  const { getVariantValue, trackConversion } = useABTest('services_headline');
+  const headline = getVariantValue() || 'End-to-End Cloud & DevOps Solutions';
+
   return (
     <section className="py-24 bg-card">
       <div className="container mx-auto px-4">
@@ -90,9 +94,19 @@ export const Services = () => {
             Our Services
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            End-to-End{" "}
-            <span className="text-gradient">Cloud & DevOps</span>{" "}
-            Solutions
+            {headline.includes('End-to-End') ? (
+              <>
+                End-to-End{" "}
+                <span className="text-gradient">Cloud & DevOps</span>{" "}
+                Solutions
+              </>
+            ) : (
+              <>
+                Comprehensive{" "}
+                <span className="text-gradient">Cloud & DevOps</span>{" "}
+                Services
+              </>
+            )}
           </h2>
           <p className="text-lg text-muted-foreground">
             From cloud migration to AI-powered automation, we deliver comprehensive 
@@ -116,6 +130,7 @@ export const Services = () => {
             >
               <Link
                 to={service.href}
+                onClick={() => trackConversion('service_click')}
                 className="block h-full p-8 rounded-2xl bg-background border border-border hover:border-coral/30 hover:shadow-xl transition-all duration-300"
               >
                 {/* Icon */}
