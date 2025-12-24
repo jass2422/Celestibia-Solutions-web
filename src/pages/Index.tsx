@@ -8,6 +8,7 @@ import { Industries } from "@/components/home/Industries";
 import { Testimonials } from "@/components/home/Testimonials";
 import { TechStack } from "@/components/home/TechStack";
 import { CTA } from "@/components/home/CTA";
+import { Partners } from "@/components/home/Partners";
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <Header />
       <Hero />
       <TechStack />
+      <Partners />
       <Services />
       <WhyChooseUs />
       <CaseStudies />
