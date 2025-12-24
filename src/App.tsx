@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AdminAuthProvider } from "@/contexts/AdminAuthContext";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -17,33 +18,39 @@ import DataEngineering from "./pages/services/DataEngineering";
 import AIMLServices from "./pages/services/AIMLServices";
 import ApplicationServices from "./pages/services/ApplicationServices";
 import SecurityServices from "./pages/services/SecurityServices";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/services/cloud" element={<CloudServices />} />
-          <Route path="/services/devops" element={<DevOpsServices />} />
-          <Route path="/services/data-engineering" element={<DataEngineering />} />
-          <Route path="/services/ai-ml" element={<AIMLServices />} />
-          <Route path="/services/application" element={<ApplicationServices />} />
-          <Route path="/services/security" element={<SecurityServices />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/*" element={<Blog />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AdminAuthProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/cloud" element={<CloudServices />} />
+            <Route path="/services/devops" element={<DevOpsServices />} />
+            <Route path="/services/data-engineering" element={<DataEngineering />} />
+            <Route path="/services/ai-ml" element={<AIMLServices />} />
+            <Route path="/services/application" element={<ApplicationServices />} />
+            <Route path="/services/security" element={<SecurityServices />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/industries" element={<Industries />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/*" element={<Blog />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AdminAuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

@@ -112,7 +112,9 @@ export const Footer = () => {
             {/* Social Links */}
             <div className="flex items-center gap-4 mt-8">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/celestibia-solutions-pvt/?originalSubdomain=in"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-coral transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
