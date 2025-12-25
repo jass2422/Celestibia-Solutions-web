@@ -13,7 +13,7 @@
 [![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
-[🌐 Live Demo](https://celestibia.lovable.app) • [📖 Documentation](#features) • [🚀 Getting Started](#getting-started)
+[🌐 Live Demo](https://id-preview--37fd4039-aaf9-467d-bc1f-9ecb2b75b1b4.lovable.app/) • [📖 Documentation](#features) • [🚀 Getting Started](#getting-started)
 
 </div>
 
