@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, LogIn, LogOut, LayoutDashboard, User, Settings } from "lucide-react";
+import { Menu, X, ChevronDown, LogOut, LayoutDashboard, User, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -13,7 +13,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
-import { useUserAuth } from "@/contexts/UserAuthContext";
 import logo from "@/assets/logo.jpeg";
 
 const navItems = [
@@ -44,15 +43,9 @@ export const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isAdmin, logout: adminLogout } = useAdminAuth();
-  const { user, isAuthenticated, logout: userLogout } = useUserAuth();
 
   const handleAdminLogout = () => {
     adminLogout();
-    navigate("/");
-  };
-
-  const handleUserLogout = () => {
-    userLogout();
     navigate("/");
   };
 
@@ -135,33 +128,7 @@ export const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
-            {isAuthenticated ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-2 p-1 rounded-full hover:bg-secondary transition-colors">
-                    <Avatar className="h-9 w-9 border-2 border-coral">
-                      <AvatarFallback className="bg-gradient-accent text-primary-foreground font-semibold">
-                        {user?.name?.charAt(0).toUpperCase() || "U"}
-                      </AvatarFallback>
-                    </Avatar>
-                    <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 bg-card border border-border z-50">
-                  <DropdownMenuLabel className="font-normal">
-                    <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-medium">{user?.name}</p>
-                      <p className="text-xs text-muted-foreground">{user?.email}</p>
-                    </div>
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleUserLogout} className="cursor-pointer text-destructive focus:text-destructive">
-                    <LogOut className="mr-2 h-4 w-4" />
-                    Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : isAdmin ? (
+            {isAdmin ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="flex items-center gap-2 p-1 rounded-full hover:bg-secondary transition-colors">
@@ -177,7 +144,7 @@ export const Header = () => {
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
                       <p className="text-sm font-medium">Admin</p>
-                      <p className="text-xs text-muted-foreground">admin@celestibia.com</p>
+                      <p className="text-xs text-muted-foreground">admin@celesibia.com</p>
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
@@ -207,20 +174,12 @@ export const Header = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" asChild>
-                  <Link to="/login">
-                    <User className="w-4 h-4 mr-1" />
-                    User Login
-                  </Link>
-                </Button>
-                <Button variant="ghost" size="sm" asChild>
-                  <Link to="/admin">
-                    <Settings className="w-4 h-4 mr-1" />
-                    Admin
-                  </Link>
-                </Button>
-              </div>
+              <Button variant="ghost" size="sm" asChild>
+                <Link to="/admin">
+                  <Settings className="w-4 h-4 mr-1" />
+                  Admin
+                </Link>
+              </Button>
             )}
             <Button variant="gradient" size="lg" asChild>
               <Link to="/contact">Get Started</Link>
@@ -274,25 +233,7 @@ export const Header = () => {
                   )}
                 </div>
               ))}
-              {isAuthenticated ? (
-                <div className="mt-4 p-4 rounded-lg bg-secondary/50">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Avatar className="h-10 w-10 border-2 border-coral">
-                      <AvatarFallback className="bg-gradient-accent text-primary-foreground font-semibold">
-                        {user?.name?.charAt(0).toUpperCase() || "U"}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-medium text-sm">{user?.name}</p>
-                      <p className="text-xs text-muted-foreground">{user?.email}</p>
-                    </div>
-                  </div>
-                  <Button variant="ghost" className="w-full justify-start text-destructive" onClick={handleUserLogout}>
-                    <LogOut className="w-4 h-4 mr-2" />
-                    Logout
-                  </Button>
-                </div>
-              ) : isAdmin ? (
+              {isAdmin ? (
                 <div className="mt-4 p-4 rounded-lg bg-secondary/50">
                   <div className="flex items-center gap-3 mb-4">
                     <Avatar className="h-10 w-10 border-2 border-coral">
@@ -302,7 +243,7 @@ export const Header = () => {
                     </Avatar>
                     <div>
                       <p className="font-medium text-sm">Admin</p>
-                      <p className="text-xs text-muted-foreground">admin@celestibia.com</p>
+                      <p className="text-xs text-muted-foreground">admin@celesibia.com</p>
                     </div>
                   </div>
                   <div className="space-y-2">
@@ -320,12 +261,6 @@ export const Header = () => {
                 </div>
               ) : (
                 <div className="mt-4 space-y-2">
-                  <Button variant="outline" className="w-full" asChild>
-                    <Link to="/login">
-                      <User className="w-4 h-4 mr-2" />
-                      User Login
-                    </Link>
-                  </Button>
                   <Button variant="ghost" className="w-full" asChild>
                     <Link to="/admin">
                       <Settings className="w-4 h-4 mr-2" />
