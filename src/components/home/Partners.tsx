@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link2 } from "lucide-react";
 import { useABTest } from "@/hooks/useABTest";
+import veeamLogo from "@/assets/veeam-logo.jpg";
 
 // Import original logos
 import awsSvg from "@/assets/logos/aws.svg";
@@ -22,6 +23,11 @@ const partners = [
     name: "AWS",
     certification: "Select Consulting Partner",
     logo: awsSvg,
+  },
+  {
+    name: "Veeam",
+    certification: "ProPartner",
+    logo: veeamLogo,
   },
 ];
 
