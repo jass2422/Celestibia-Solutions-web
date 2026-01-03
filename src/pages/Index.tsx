@@ -10,6 +10,9 @@ import { TechStack } from "@/components/home/TechStack";
 import { CTA } from "@/components/home/CTA";
 import { Partners } from "@/components/home/Partners";
 import { CICDPipeline } from "@/components/home/CICDPipeline";
+import { AnimatedFeatures } from "@/components/home/AnimatedFeatures";
+import { ValueProposition } from "@/components/home/ValueProposition";
+import { AnimatedServiceCards } from "@/components/home/AnimatedServiceCards";
 
 const Index = () => {
   return (
@@ -17,9 +20,12 @@ const Index = () => {
       <Header />
       <Hero />
       <TechStack />
+      <AnimatedServiceCards />
       <Partners />
       <Services />
+      <AnimatedFeatures />
       <CICDPipeline />
+      <ValueProposition />
       <WhyChooseUs />
       <CaseStudies />
       <Industries />
