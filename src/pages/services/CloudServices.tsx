@@ -13,48 +13,59 @@ import {
   TrendingUp,
   Database,
   RefreshCw,
-  Settings
+  Settings,
+  Layers,
+  HardDrive
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AWSLogo, AzureLogo, GCPLogo } from "@/components/logos/TechLogos";
+
+// Import original logos
+import awsSvg from "@/assets/logos/aws.svg";
+import gcpLogo from "@/assets/logos/google-cloud.png";
+import azureSvg from "@/assets/logos/azure.svg";
 
 const features = [
   {
     icon: Server,
     title: "Cloud Infrastructure Managed Services",
-    description: "24/7 management and monitoring of your cloud infrastructure across AWS, Azure, and GCP."
+    description: "Proactive management and monitoring of your cloud infrastructure, ensuring seamless performance and cost efficiency."
   },
   {
     icon: RefreshCw,
     title: "Cloud Migration",
-    description: "Seamless migration of workloads, applications, and data to the cloud with minimal downtime."
+    description: "Smooth, secure, and optimized migration of your workloads to the cloud, minimizing downtime and maximizing performance."
   },
   {
     icon: Settings,
-    title: "Cloud Architecture & Design",
-    description: "Design scalable, secure, and cost-effective cloud architectures tailored to your needs."
+    title: "Cloud Architecture and Design",
+    description: "Designing scalable, secure, and high-performance cloud architectures tailored to your business needs."
   },
   {
     icon: Shield,
-    title: "Cloud Security & Governance",
-    description: "Implement robust security controls, compliance frameworks, and governance policies."
+    title: "Cloud Security and Governance",
+    description: "Robust security and governance frameworks to safeguard your data and maintain compliance."
   },
   {
     icon: TrendingUp,
     title: "Cost Optimization",
-    description: "Reduce cloud spend by up to 40% through rightsizing, reserved instances, and FinOps practices."
+    description: "Identifying and eliminating inefficiencies to reduce cloud spend without compromising performance."
   },
   {
     icon: Database,
-    title: "Disaster Recovery",
-    description: "Business continuity solutions with automated failover and rapid recovery capabilities."
+    title: "Disaster Recovery (DR) & Business Continuity Planning (BCP)",
+    description: "Comprehensive solutions for data backup, disaster recovery, and business continuity on the cloud."
+  },
+  {
+    icon: Layers,
+    title: "Environment Management (Dev, UAT, Prod)",
+    description: "Structured setup of isolated environments with promotion pipelines and config separation for SDLC workflows."
   },
 ];
 
 const cloudProviders = [
-  { name: "Amazon Web Services", Logo: AWSLogo, description: "Comprehensive cloud platform with 200+ services" },
-  { name: "Microsoft Azure", Logo: AzureLogo, description: "Enterprise-grade cloud with hybrid capabilities" },
-  { name: "Google Cloud Platform", Logo: GCPLogo, description: "Data analytics and ML-powered cloud services" },
+  { name: "Amazon Web Services", logo: awsSvg, description: "Comprehensive cloud platform with 200+ services" },
+  { name: "Microsoft Azure", logo: azureSvg, description: "Enterprise-grade cloud with hybrid capabilities" },
+  { name: "Google Cloud Platform", logo: gcpLogo, description: "Data analytics and ML-powered cloud services" },
 ];
 
 const benefits = [
@@ -94,12 +105,12 @@ const CloudServices = () => {
               <Cloud className="w-10 h-10 text-white" />
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Cloud{" "}
+              Core Cloud{" "}
               <span className="text-gradient">Services</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Accelerate your digital transformation with our comprehensive cloud services 
-              across AWS, Azure, and Google Cloud Platform.
+              We provide a full suite of cloud services across major platforms like AWS, Azure, and GCP. 
+              Accelerate your digital transformation with our comprehensive cloud expertise.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="gradient" size="lg" asChild>
@@ -144,7 +155,11 @@ const CloudServices = () => {
                 whileHover={{ scale: 1.02, y: -5 }}
                 className="p-8 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-xl transition-all text-center group"
               >
-                <provider.Logo className="w-16 h-16 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                <img 
+                  src={provider.logo} 
+                  alt={provider.name} 
+                  className="w-16 h-16 mx-auto mb-4 object-contain group-hover:scale-110 transition-transform"
+                />
                 <h3 className="font-heading text-xl font-bold mb-2">{provider.name}</h3>
                 <p className="text-muted-foreground text-sm">{provider.description}</p>
               </motion.div>
@@ -153,8 +168,46 @@ const CloudServices = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Features Grid */}
       <section className="py-20 bg-card">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              Our Cloud Expertise
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              End-to-end cloud solutions tailored to your business needs
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-6 rounded-2xl bg-background border border-border hover:border-primary/30 transition-all group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-heading text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div

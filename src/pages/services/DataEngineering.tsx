@@ -11,46 +11,67 @@ import {
   Workflow,
   Shield,
   Zap,
-  PieChart
+  PieChart,
+  Activity,
+  FileSearch
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const features = [
+const dataEngineeringFeatures = [
   {
     icon: Workflow,
     title: "Data Pipeline Development",
-    description: "Build robust ETL/ELT pipelines using Apache Spark, Airflow, dbt, and modern data stack tools."
+    description: "ETL/ELT pipelines using Apache Airflow, DBT, Spark, Glue, and more."
   },
   {
     icon: Database,
     title: "Data Warehousing",
-    description: "Design and implement data warehouses on Snowflake, Redshift, BigQuery, and Databricks."
+    description: "Design and implementation using Snowflake, Redshift, BigQuery, and Azure Synapse."
   },
   {
     icon: Zap,
-    title: "Real-Time Processing",
-    description: "Stream processing solutions with Kafka, Flink, and Spark Streaming for instant insights."
+    title: "Real-Time Data Processing",
+    description: "Kafka, Flink, and Kinesis for streaming analytics."
+  },
+  {
+    icon: Activity,
+    title: "Data Lakes",
+    description: "Scalable storage with Lakehouse architecture (Delta Lake, Iceberg)."
   },
   {
     icon: Shield,
     title: "Data Governance & Quality",
-    description: "Implement data quality frameworks, lineage tracking, and compliance controls."
+    description: "Cataloging, lineage, and validation tools like Great Expectations and DataHub."
   },
+];
+
+const dataScienceFeatures = [
   {
     icon: BarChart3,
-    title: "Business Intelligence",
-    description: "Interactive dashboards and reporting with Tableau, Power BI, Looker, and Metabase."
+    title: "Predictive Modeling",
+    description: "Build machine learning models for forecasting, classification, and recommendation systems."
   },
   {
     icon: PieChart,
-    title: "Predictive Analytics",
-    description: "Turn data into actionable insights with advanced analytics and forecasting models."
+    title: "Business Intelligence",
+    description: "Custom dashboards using Power BI, Tableau, and Looker."
+  },
+  {
+    icon: FileSearch,
+    title: "Statistical Analysis",
+    description: "Hypothesis testing, regression analysis, and data storytelling."
+  },
+  {
+    icon: Workflow,
+    title: "Data Strategy Consulting",
+    description: "Architecture, tooling, and capability roadmap for enterprise data success."
   },
 ];
 
 const platforms = [
   "Snowflake", "Databricks", "BigQuery", "Redshift", "Apache Spark",
-  "Airflow", "dbt", "Kafka", "Flink", "Tableau", "Power BI", "Looker"
+  "Airflow", "dbt", "Kafka", "Flink", "Tableau", "Power BI", "Looker",
+  "Delta Lake", "Iceberg", "Glue", "Kinesis", "Great Expectations", "DataHub"
 ];
 
 const DataEngineering = () => {
@@ -81,12 +102,12 @@ const DataEngineering = () => {
               <Database className="w-10 h-10 text-white" />
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Data{" "}
-              <span className="text-gradient">Engineering</span>
+              Data Engineering{" "}
+              <span className="text-gradient">& Data Science</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Transform raw data into valuable insights with our comprehensive data engineering 
-              and analytics solutions.
+              Turn raw data into valuable insights and intelligent actions. Our team helps organizations 
+              build modern data platforms and unlock the power of analytics and AI.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="gradient" size="lg" asChild>
@@ -103,7 +124,7 @@ const DataEngineering = () => {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Data Engineering Section */}
       <section className="py-20 bg-card">
         <div className="container mx-auto px-4">
           <motion.div
@@ -113,15 +134,15 @@ const DataEngineering = () => {
             className="text-center mb-16"
           >
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              Data Engineering Capabilities
+              🔧 Data Engineering
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              End-to-end data solutions from ingestion to insights
+              Build robust data infrastructure for enterprise-scale analytics
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+            {dataEngineeringFeatures.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -141,8 +162,46 @@ const DataEngineering = () => {
         </div>
       </section>
 
-      {/* Platforms Section */}
+      {/* Data Science & Analytics Section */}
       <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              📈 Data Science & Analytics
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Transform data into actionable insights and business value
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {dataScienceFeatures.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-heading text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Platforms Section */}
+      <section className="py-20 bg-card">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -165,9 +224,9 @@ const DataEngineering = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ delay: index * 0.03 }}
                 whileHover={{ scale: 1.05 }}
-                className="px-6 py-3 rounded-full bg-card border border-border hover:border-primary/50 transition-all cursor-default"
+                className="px-6 py-3 rounded-full bg-background border border-border hover:border-primary/50 transition-all cursor-default"
               >
                 <span className="font-medium text-foreground">{platform}</span>
               </motion.div>
@@ -177,7 +236,7 @@ const DataEngineering = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-card">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[

@@ -11,7 +11,9 @@ import {
   Eye,
   FileText,
   Lightbulb,
-  Cpu
+  Cpu,
+  Layers,
+  Settings
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -19,32 +21,42 @@ const features = [
   {
     icon: MessageSquare,
     title: "AI-Powered Chatbots",
-    description: "Intelligent conversational AI for customer support, sales, and internal operations using GPT, Claude, and custom LLMs."
+    description: "Custom intelligent virtual assistants for customer support, internal tools, and lead generation — integrated with OpenAI, Dialogflow, or Rasa."
   },
   {
     icon: Sparkles,
     title: "Generative AI Solutions",
-    description: "Custom GenAI applications including content generation, code assistants, and creative tools."
+    description: "Implementation of models like GPT, DALL·E, and Claude for content generation, summarization, translation, and automation."
   },
   {
     icon: Cpu,
-    title: "ML Model Development",
-    description: "End-to-end machine learning lifecycle from data preparation to model deployment and monitoring."
+    title: "Machine Learning Model Development",
+    description: "Supervised and unsupervised model training for predictions, classification, recommendation systems, and more."
+  },
+  {
+    icon: Layers,
+    title: "AI Integration Services",
+    description: "Embedding AI into existing applications, CRMs, ERPs, or customer workflows."
   },
   {
     icon: Eye,
     title: "Computer Vision",
-    description: "Image recognition, object detection, OCR, and video analytics solutions for various industries."
+    description: "Image recognition, object detection, and OCR using TensorFlow, OpenCV, and PyTorch."
   },
   {
     icon: FileText,
-    title: "NLP & Text Analytics",
-    description: "Sentiment analysis, document processing, named entity recognition, and language understanding."
+    title: "Natural Language Processing (NLP)",
+    description: "Sentiment analysis, named entity recognition, text classification, and summarization."
+  },
+  {
+    icon: Settings,
+    title: "Data Engineering & Model Ops",
+    description: "Data pipelines, model deployment, and monitoring using MLFlow, Airflow, and SageMaker."
   },
   {
     icon: Lightbulb,
-    title: "AI Strategy Consulting",
-    description: "Strategic roadmaps for AI adoption, use case identification, and ROI optimization."
+    title: "AI/ML Strategy Consulting",
+    description: "Advisory on use cases, feasibility, and roadmap to adopt AI in your enterprise."
   },
 ];
 
@@ -93,8 +105,8 @@ const AIMLServices = () => {
               <Brain className="w-10 h-10 text-white" />
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              AI & Machine{" "}
-              <span className="text-gradient">Learning</span>
+              AI & ML{" "}
+              <span className="text-gradient">Services</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Unlock the power of artificial intelligence to drive innovation, 
@@ -132,21 +144,21 @@ const AIMLServices = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
                 className="p-6 rounded-2xl bg-background border border-border hover:border-primary/30 transition-all group"
               >
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <feature.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="font-heading text-lg font-bold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm">{feature.description}</p>
               </motion.div>
             ))}
           </div>
