@@ -92,8 +92,8 @@ export const CaseStudies = () => {
               <div className="p-8">
                 {/* Industry Badge */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${study.color} flex items-center justify-center`}>
-                    <study.icon className="w-5 h-5 text-primary-foreground" />
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${study.color} flex items-center justify-center shadow-lg`}>
+                    <study.icon className="w-5 h-5 text-white drop-shadow-md" />
                   </div>
                   <span className="text-sm font-medium text-muted-foreground">
                     {study.industry}
