@@ -103,8 +103,8 @@ export const WhyChooseUs = () => {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-6 h-6 rounded-full bg-gradient-accent flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-4 h-4 text-primary-foreground" />
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-coral to-orange flex items-center justify-center flex-shrink-0 shadow-md">
+                    <CheckCircle className="w-4 h-4 text-white drop-shadow-sm" />
                   </div>
                   <span className="font-medium text-foreground">{belief}</span>
                 </motion.div>
@@ -129,8 +129,8 @@ export const WhyChooseUs = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="p-6 rounded-xl bg-card border border-border hover:border-coral/30 hover:shadow-lg transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center mb-4">
-                  <reason.icon className="w-6 h-6 text-primary-foreground" />
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-coral to-orange flex items-center justify-center mb-4 shadow-lg">
+                  <reason.icon className="w-6 h-6 text-white drop-shadow-md" />
                 </div>
                 <h3 className="font-heading font-bold text-lg mb-2">{reason.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
