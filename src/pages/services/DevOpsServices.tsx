@@ -24,6 +24,7 @@ import githubSvg from "@/assets/logos/github.svg";
 import argocdLogo from "@/assets/logos/argocd.png";
 import grafanaLogo from "@/assets/logos/grafana.png";
 import prometheusLogo from "@/assets/logos/prometheus.png";
+import azureSvg from "@/assets/logos/azure.svg";
 
 import {
   KubernetesLogo,
@@ -31,7 +32,6 @@ import {
   TerraformLogo,
   AnsibleLogo,
   HelmLogo,
-  AzureLogo
 } from "@/components/logos/TechLogos";
 
 const features = [
@@ -66,6 +66,7 @@ const features = [
 const tools = [
   { name: "GitLab", logo: gitlabLogo, isImage: true },
   { name: "AWS", logo: awsSvg, isImage: true },
+  { name: "Azure", logo: azureSvg, isImage: true },
   { name: "Google Cloud", logo: gcpLogo, isImage: true },
   { name: "Jenkins", logo: jenkinsLogo, isImage: true },
   { name: "GitHub Actions", logo: githubSvg, isImage: true },
@@ -77,7 +78,6 @@ const tools = [
   { name: "Terraform", Logo: TerraformLogo, isImage: false },
   { name: "Ansible", Logo: AnsibleLogo, isImage: false },
   { name: "Helm", Logo: HelmLogo, isImage: false },
-  { name: "Azure", Logo: AzureLogo, isImage: false },
 ];
 
 const DevOpsServices = () => {
