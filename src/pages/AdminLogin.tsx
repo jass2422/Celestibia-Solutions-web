@@ -7,31 +7,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { Lock, LogIn, Mail } from "lucide-react";
-
-const ADMINS_KEY = "celestibia_admins";
-
-interface Admin {
-  id: string;
-  email: string;
-  password: string;
-}
-
-const getAdmins = (): Admin[] => {
-  const data = localStorage.getItem(ADMINS_KEY);
-  return data ? JSON.parse(data) : [];
-};
-
+import { Lock, LogIn, Mail, Loader2 } from "lucide-react";
+import { HexagonPattern, IsometricIcons } from "@/components/graphics/InfraCloudStyle";
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { login, isAdmin } = useAdminAuth();
+  const { login, isAdmin, isLoading: authLoading } = useAdminAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
   // Redirect if already logged in
-  if (isAdmin) {
+  if (!authLoading && isAdmin) {
     navigate("/admin/dashboard");
     return null;
   }
@@ -40,45 +27,48 @@ const AdminLogin = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    const { error } = await login(email, password);
 
-    // Check registered admins first
-    const admins = getAdmins();
-    const registeredAdmin = admins.find(
-      (a) => a.email.toLowerCase() === email.toLowerCase() && a.password === password
-    );
-
-    if (registeredAdmin) {
-      // Use the context login with the legacy password to set isAdmin true
-      login("celestibia2024");
+    if (error) {
       toast({
-        title: "Welcome Admin!",
-        description: "You have successfully logged in.",
-      });
-      navigate("/admin/dashboard");
-    } else if (login(password)) {
-      // Fallback to legacy password-only login
-      toast({
-        title: "Welcome Admin!",
-        description: "You have successfully logged in.",
-      });
-      navigate("/admin/dashboard");
-    } else {
-      toast({
-        title: "Invalid Credentials",
-        description: "Please check your email and password.",
+        title: "Login Failed",
+        description: error,
         variant: "destructive",
       });
+    } else {
+      toast({
+        title: "Welcome Back!",
+        description: "You have successfully logged in.",
+      });
+      navigate("/admin/dashboard");
     }
+
     setIsLoading(false);
   };
+
+  if (authLoading) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-coral" />
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen">
       <Header />
       
-      <section className="pt-32 pb-20 bg-gradient-hero min-h-[80vh] flex items-center">
-        <div className="container mx-auto px-4">
+      <section className="pt-32 pb-20 bg-gradient-hero min-h-[80vh] flex items-center relative overflow-hidden">
+        <HexagonPattern />
+        <IsometricIcons className="opacity-20" />
+        
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-gradient-to-br from-[#F97316]/20 to-[#8B5CF6]/10 rounded-full blur-[100px]" 
+        />
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,6 +95,7 @@ const AdminLogin = () => {
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                     <Input
                       type="email"
+                      required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter admin email"
@@ -137,7 +128,10 @@ const AdminLogin = () => {
                   disabled={isLoading}
                 >
                   {isLoading ? (
-                    "Logging in..."
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Logging in...
+                    </>
                   ) : (
                     <>
                       <LogIn className="w-4 h-4 mr-2" />
@@ -147,16 +141,10 @@ const AdminLogin = () => {
                 </Button>
               </form>
 
-              <div className="mt-6 space-y-2 text-center text-sm">
+              <div className="mt-6 text-center text-sm">
                 <p className="text-muted-foreground">
                   <Link to="/admin/forgot-password" className="text-coral hover:underline">
                     Forgot password?
-                  </Link>
-                </p>
-                <p className="text-muted-foreground">
-                  Need an account?{" "}
-                  <Link to="/admin/signup" className="text-coral hover:underline">
-                    Register here
                   </Link>
                 </p>
               </div>
