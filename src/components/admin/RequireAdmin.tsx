@@ -1,27 +1,48 @@
-import { ReactNode } from "react";
-import { Navigate, useLocation } from "react-router-dom";
-import { Loader2 } from "lucide-react";
-import { useAdminAuth } from "@/contexts/AdminAuthContext";
+import { createContext, useContext, useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
-type RequireAdminProps = {
-  children: ReactNode;
+type AdminAuthContextType = {
+  isAdmin: boolean;
+  isLoading: boolean;
 };
 
-export default function RequireAdmin({ children }: RequireAdminProps) {
-  const { isAdmin, isLoading } = useAdminAuth();
-  const location = useLocation();
+const AdminAuthContext = createContext<AdminAuthContextType>({
+  isAdmin: false,
+  isLoading: true,
+});
 
-  if (isLoading) {
-    return (
-      <main className="min-h-screen flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
-      </main>
-    );
-  }
+export const AdminAuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (!isAdmin) {
-    return <Navigate to="/admin" replace state={{ from: location.pathname }} />;
-  }
+  useEffect(() => {
+    const checkAdmin = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
 
-  return <>{children}</>;
-}
+      if (!session) {
+        setIsLoading(false);
+        return;
+      }
+
+      const { data: profile, error } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", session.user.id)
+        .single();
+
+      if (!error && profile?.role === "admin") {
+        setIsAdmin(true);
+      }
+
+      setIsLoading(false);
+    };
+
+    checkAdmin();
+  }, []);
+
+  return <AdminAuthContext.Provider value={{ isAdmin, isLoading }}>{children}</AdminAuthContext.Provider>;
+};
+
+export const useAdminAuth = () => useContext(AdminAuthContext);
