@@ -24,6 +24,7 @@ import SecurityServices from "./pages/services/SecurityServices";
 import AdminLogin from "./pages/AdminLogin";
 import AdminSignup from "./pages/AdminSignup";
 import AdminForgotPassword from "./pages/AdminForgotPassword";
+import AdminResetPassword from "./pages/AdminResetPassword";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserLogin from "./pages/UserLogin";
 import TermsAndConditions from "./pages/TermsAndConditions";
@@ -58,6 +59,7 @@ const App = () => (
               <Route path="/admin" element={<AdminLogin />} />
               <Route path="/admin/signup" element={<AdminSignup />} />
               <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
+              <Route path="/admin/reset-password" element={<AdminResetPassword />} />
               <Route
                 path="/admin/dashboard"
                 element={
