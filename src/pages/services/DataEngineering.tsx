@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CTA } from "@/components/home/CTA";
-import {
-  Database,
-  ArrowRight,
+import { 
+  Database, 
+  ArrowRight, 
   CheckCircle,
   BarChart3,
   Workflow,
@@ -13,7 +13,7 @@ import {
   Zap,
   PieChart,
   Activity,
-  FileSearch,
+  FileSearch
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FloatingIcons, GradientOrbs, GridPattern } from "@/components/graphics/FloatingIcons";
@@ -28,27 +28,27 @@ const dataEngineeringFeatures = [
   {
     icon: Workflow,
     title: "Data Pipeline Development",
-    description: "ETL/ELT pipelines using Apache Airflow, DBT, Spark, Glue, and more.",
+    description: "ETL/ELT pipelines using Apache Airflow, DBT, Spark, Glue, and more."
   },
   {
     icon: Database,
     title: "Data Warehousing",
-    description: "Design and implementation using Snowflake, Redshift, BigQuery, and Azure Synapse.",
+    description: "Design and implementation using Snowflake, Redshift, BigQuery, and Azure Synapse."
   },
   {
     icon: Zap,
     title: "Real-Time Data Processing",
-    description: "Kafka, Flink, and Kinesis for streaming analytics.",
+    description: "Kafka, Flink, and Kinesis for streaming analytics."
   },
   {
     icon: Activity,
     title: "Data Lakes",
-    description: "Scalable storage with Lakehouse architecture (Delta Lake, Iceberg).",
+    description: "Scalable storage with Lakehouse architecture (Delta Lake, Iceberg)."
   },
   {
     icon: Shield,
     title: "Data Governance & Quality",
-    description: "Cataloging, lineage, and validation tools like Great Expectations and DataHub.",
+    description: "Cataloging, lineage, and validation tools like Great Expectations and DataHub."
   },
 ];
 
@@ -56,51 +56,36 @@ const dataScienceFeatures = [
   {
     icon: BarChart3,
     title: "Predictive Modeling",
-    description: "Build machine learning models for forecasting, classification, and recommendation systems.",
+    description: "Build machine learning models for forecasting, classification, and recommendation systems."
   },
   {
     icon: PieChart,
     title: "Business Intelligence",
-    description: "Custom dashboards using Power BI, Tableau, and Looker.",
+    description: "Custom dashboards using Power BI, Tableau, and Looker."
   },
   {
     icon: FileSearch,
     title: "Statistical Analysis",
-    description: "Hypothesis testing, regression analysis, and data storytelling.",
+    description: "Hypothesis testing, regression analysis, and data storytelling."
   },
   {
     icon: Workflow,
     title: "Data Strategy Consulting",
-    description: "Architecture, tooling, and capability roadmap for enterprise data success.",
+    description: "Architecture, tooling, and capability roadmap for enterprise data success."
   },
 ];
 
 const platforms = [
-  { name: "Snowflake", logo: "/logos/snowflake.svg" },
-  { name: "Databricks", logo: "/logos/databricks.svg" },
-  { name: "BigQuery", logo: "/logos/bigquery.svg" },
-  { name: "Redshift", logo: "/logos/redshift.svg" },
-  { name: "Apache Spark", logo: "/logos/spark.svg" },
-  { name: "Airflow", logo: "/logos/airflow.svg" },
-  { name: "dbt", logo: "/logos/dbt.svg" },
-  { name: "Kafka", logo: "/logos/kafka.svg" },
-  { name: "Flink", logo: "/logos/flink.svg" },
-  { name: "Tableau", logo: "/logos/tableau.svg" },
-  { name: "Power BI", logo: "/logos/powerbi.svg" },
-  { name: "Looker", logo: "/logos/looker.svg" },
-  { name: "Delta Lake", logo: "/logos/deltalake.svg" },
-  { name: "Iceberg", logo: "/logos/iceberg.svg" },
-  { name: "Glue", logo: "/logos/glue.svg" },
-  { name: "Kinesis", logo: "/logos/kinesis.svg" },
-  { name: "Great Expectations", logo: "/logos/greatexpectations.svg" },
-  { name: "DataHub", logo: "/logos/datahub.svg" },
+  "Snowflake", "Databricks", "BigQuery", "Redshift", "Apache Spark",
+  "Airflow", "dbt", "Kafka", "Flink", "Tableau", "Power BI", "Looker",
+  "Delta Lake", "Iceberg", "Glue", "Kinesis", "Great Expectations", "DataHub"
 ];
 
 const DataEngineering = () => {
   return (
     <main className="min-h-screen">
       <Header />
-
+      
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-hero relative overflow-hidden">
         <GradientOrbs />
@@ -108,9 +93,9 @@ const DataEngineering = () => {
         <GridPattern />
         <div className="absolute inset-0 opacity-10">
           <motion.div
-            animate={{
+            animate={{ 
               scale: [1, 1.2, 1],
-              rotate: [0, 180, 360],
+              rotate: [0, 180, 360]
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             className="absolute top-20 right-20 w-64 h-64 bg-green-500/20 rounded-full blur-3xl"
@@ -127,11 +112,12 @@ const DataEngineering = () => {
               <Database className="w-10 h-10 text-white" />
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Data Engineering <span className="text-gradient">& Data Science</span>
+              Data Engineering{" "}
+              <span className="text-gradient">& Data Science</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Turn raw data into valuable insights and intelligent actions. Our team helps organizations build modern
-              data platforms and unlock the power of analytics and AI.
+              Turn raw data into valuable insights and intelligent actions. Our team helps organizations 
+              build modern data platforms and unlock the power of analytics and AI.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="gradient" size="lg" asChild>
@@ -158,11 +144,7 @@ const DataEngineering = () => {
               viewport={{ once: true }}
               className="bg-background rounded-2xl border border-border p-6"
             >
-              <img
-                src={dataPrepWorkflow}
-                alt="Data Prep & Workflow Orchestration"
-                className="w-full h-64 object-contain"
-              />
+              <img src={dataPrepWorkflow} alt="Data Prep & Workflow Orchestration" className="w-full h-64 object-contain" />
               <h3 className="font-heading text-xl font-bold mt-4 mb-2">Data Prep & Workflow Orchestration</h3>
               <p className="text-muted-foreground">Automated data pipelines with intelligent orchestration</p>
             </motion.div>
@@ -190,7 +172,9 @@ const DataEngineering = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">🔧 Data Engineering</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              🔧 Data Engineering
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Build robust data infrastructure for enterprise-scale analytics
             </p>
@@ -226,7 +210,9 @@ const DataEngineering = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">📈 Data Science & Analytics</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              📈 Data Science & Analytics
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Transform data into actionable insights and business value
             </p>
@@ -262,8 +248,12 @@ const DataEngineering = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Platforms & Tools</h2>
-            <p className="text-muted-foreground">We work with leading data platforms and technologies</p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              Platforms & Tools
+            </h2>
+            <p className="text-muted-foreground">
+              We work with leading data platforms and technologies
+            </p>
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-4">
