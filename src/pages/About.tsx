@@ -45,11 +45,11 @@ const team = [
 ];
 
 const whatWeDo = [
-  { emoji: " ", title: "Custom Software Development" },
-  { emoji: " ", title: "Cloud & DevOps Solutions" },
-  { emoji: " ", title: "Web & Mobile App Engineering" },
-  { emoji: " ", title: "Automation & Process Optimization" },
-  { emoji: " ", title: "Secure, Reliable & High-Performance Systems" },
+  { emoji: " ", title: <b>Custom Software Development</b> },
+  { emoji: " ", title: <b>Cloud & DevOps Solutions</b> },
+  { emoji: " ", title: <b>Web & Mobile App Engineering</b> },
+  { emoji: " ", title: <b>Automation & Process Optimization</b> },
+  { emoji: " ", title: <b>Secure, Reliable & High-Performance Systems</b> },
 ];
 
 const About = () => {
