@@ -21,7 +21,15 @@ import {
   Fingerprint,
   Scan,
   AlertCircle,
-  FileWarning
+  FileWarning,
+  BadgeCheck,
+  HeartPulse,
+  CreditCard,
+  Globe,
+  Award,
+  Building2,
+  Scale,
+  Cloud
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FloatingIcons, GradientOrbs, HexagonGrid, CircuitLines } from "@/components/graphics/FloatingIcons";
@@ -76,7 +84,14 @@ const cybersecurityFeatures = [
 ];
 
 const complianceFrameworks = [
-  "SOC 2", "HIPAA", "PCI-DSS", "GDPR", "ISO 27001", "NIST", "CIS Benchmarks", "FedRAMP"
+  { name: "SOC 2", icon: BadgeCheck, color: "from-blue-500 to-indigo-500", description: "Service Organization Control" },
+  { name: "HIPAA", icon: HeartPulse, color: "from-red-500 to-pink-500", description: "Health Insurance Portability" },
+  { name: "PCI-DSS", icon: CreditCard, color: "from-green-500 to-emerald-500", description: "Payment Card Industry" },
+  { name: "GDPR", icon: Globe, color: "from-blue-600 to-cyan-500", description: "General Data Protection" },
+  { name: "ISO 27001", icon: Award, color: "from-purple-500 to-violet-500", description: "Information Security" },
+  { name: "NIST", icon: Building2, color: "from-slate-600 to-slate-800", description: "National Standards" },
+  { name: "CIS Benchmarks", icon: Scale, color: "from-orange-500 to-amber-500", description: "Security Benchmarks" },
+  { name: "FedRAMP", icon: Cloud, color: "from-sky-500 to-blue-600", description: "Federal Risk Authorization" },
 ];
 
 const SecurityServices = () => {
@@ -220,23 +235,32 @@ const SecurityServices = () => {
       </section>
 
       {/* Compliance Frameworks */}
-      <section className="py-20 bg-card">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-card relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-12"
           >
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-rose-500 mb-4">
+              <ShieldCheck className="w-8 h-8 text-white" />
+            </div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               Compliance Frameworks
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               We help you achieve and maintain compliance with industry standards
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {complianceFrameworks.map((framework, index) => (
               <motion.div
                 key={index}
@@ -244,10 +268,14 @@ const SecurityServices = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                whileHover={{ scale: 1.05 }}
-                className="px-6 py-3 rounded-full bg-background border border-border hover:border-primary/50 transition-all cursor-default"
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="group flex flex-col items-center p-5 rounded-xl bg-background border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300"
               >
-                <span className="font-medium text-foreground">{framework}</span>
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${framework.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                  <framework.icon className="w-7 h-7 text-white" />
+                </div>
+                <span className="font-semibold text-foreground text-center">{framework.name}</span>
+                <span className="text-xs text-muted-foreground text-center mt-1">{framework.description}</span>
               </motion.div>
             ))}
           </div>

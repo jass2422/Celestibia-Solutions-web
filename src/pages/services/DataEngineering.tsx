@@ -13,7 +13,23 @@ import {
   Zap,
   PieChart,
   Activity,
-  FileSearch
+  FileSearch,
+  Snowflake,
+  Flame,
+  Cloud,
+  Server,
+  Gauge,
+  Radio,
+  Layers,
+  Cable,
+  BarChart,
+  LineChart,
+  Eye,
+  GitMerge,
+  BadgeCheck,
+  Network,
+  Boxes,
+  Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FloatingIcons, GradientOrbs, GridPattern } from "@/components/graphics/FloatingIcons";
@@ -76,9 +92,24 @@ const dataScienceFeatures = [
 ];
 
 const platforms = [
-  "Snowflake", "Databricks", "BigQuery", "Redshift", "Apache Spark",
-  "Airflow", "dbt", "Kafka", "Flink", "Tableau", "Power BI", "Looker",
-  "Delta Lake", "Iceberg", "Glue", "Kinesis", "Great Expectations", "DataHub"
+  { name: "Snowflake", icon: Snowflake, color: "from-cyan-500 to-blue-500" },
+  { name: "Databricks", icon: Flame, color: "from-orange-500 to-red-500" },
+  { name: "BigQuery", icon: Cloud, color: "from-blue-500 to-indigo-500" },
+  { name: "Redshift", icon: Server, color: "from-red-500 to-pink-500" },
+  { name: "Apache Spark", icon: Zap, color: "from-yellow-500 to-orange-500" },
+  { name: "Airflow", icon: Workflow, color: "from-teal-500 to-cyan-500" },
+  { name: "dbt", icon: GitMerge, color: "from-orange-500 to-amber-500" },
+  { name: "Kafka", icon: Radio, color: "from-slate-600 to-slate-800" },
+  { name: "Flink", icon: Gauge, color: "from-pink-500 to-rose-500" },
+  { name: "Tableau", icon: BarChart, color: "from-blue-600 to-blue-800" },
+  { name: "Power BI", icon: PieChart, color: "from-yellow-500 to-yellow-600" },
+  { name: "Looker", icon: Eye, color: "from-purple-500 to-violet-500" },
+  { name: "Delta Lake", icon: Layers, color: "from-sky-500 to-blue-600" },
+  { name: "Iceberg", icon: Boxes, color: "from-cyan-400 to-teal-500" },
+  { name: "Glue", icon: Cable, color: "from-indigo-500 to-purple-500" },
+  { name: "Kinesis", icon: Activity, color: "from-orange-400 to-orange-600" },
+  { name: "Great Expectations", icon: BadgeCheck, color: "from-green-500 to-emerald-500" },
+  { name: "DataHub", icon: Network, color: "from-violet-500 to-purple-600" },
 ];
 
 const DataEngineering = () => {
@@ -240,23 +271,32 @@ const DataEngineering = () => {
       </section>
 
       {/* Platforms Section */}
-      <section className="py-20 bg-card">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-card relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-12"
           >
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 mb-4">
+              <Sparkles className="w-8 h-8 text-white" />
+            </div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               Platforms & Tools
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               We work with leading data platforms and technologies
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {platforms.map((platform, index) => (
               <motion.div
                 key={index}
@@ -264,10 +304,13 @@ const DataEngineering = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.03 }}
-                whileHover={{ scale: 1.05 }}
-                className="px-6 py-3 rounded-full bg-background border border-border hover:border-primary/50 transition-all cursor-default"
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="group flex flex-col items-center p-4 rounded-xl bg-background border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300"
               >
-                <span className="font-medium text-foreground">{platform}</span>
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${platform.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                  <platform.icon className="w-6 h-6 text-white" />
+                </div>
+                <span className="font-medium text-sm text-foreground text-center">{platform.name}</span>
               </motion.div>
             ))}
           </div>
