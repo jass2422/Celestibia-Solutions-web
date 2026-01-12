@@ -2,29 +2,31 @@
 import snowflakeLogo from "@/assets/logos/snowflake.svg";
 import databricksLogo from "@/assets/logos/databricks.svg";
 import bigqueryLogo from "@/assets/logos/bigquery.svg";
+import redshiftLogo from "@/assets/logos/redshift.svg";
 import sparkLogo from "@/assets/logos/spark.svg";
 import airflowLogo from "@/assets/logos/airflow.svg";
+import dbtLogo from "@/assets/logos/dbt.svg";
 import kafkaLogo from "@/assets/logos/kafka.svg";
 import flinkLogo from "@/assets/logos/flink.svg";
 import tableauLogo from "@/assets/logos/tableau.svg";
 import powerbiLogo from "@/assets/logos/powerbi.svg";
 import lookerLogo from "@/assets/logos/looker.svg";
 import deltalakeLogo from "@/assets/logos/deltalake.svg";
-import awsLogo from "@/assets/logos/aws.svg";
+import icebergLogo from "@/assets/logos/iceberg.svg";
+import glueLogo from "@/assets/logos/glue.svg";
+import kinesisLogo from "@/assets/logos/kinesis.svg";
+import greatExpectationsLogo from "@/assets/logos/great-expectations.png";
+import datahubLogo from "@/assets/logos/datahub.svg";
 
 import { 
-  Database, 
-  Cloud, 
-  Layers, 
-  Activity, 
-  CheckSquare,
-  Globe,
-  Shield,
-  FileCheck,
-  Lock,
-  AlertTriangle,
-  Server,
-  Gauge
+  Shield, 
+  FileCheck, 
+  Lock, 
+  Globe, 
+  Server, 
+  Gauge, 
+  Cloud,
+  Building2
 } from "lucide-react";
 
 export interface PlatformItem {
@@ -38,24 +40,24 @@ export const dataEngineeringPlatforms: PlatformItem[] = [
   { name: "Snowflake", logo: snowflakeLogo },
   { name: "Databricks", logo: databricksLogo },
   { name: "BigQuery", logo: bigqueryLogo },
-  { name: "Redshift", logo: awsLogo },
+  { name: "Redshift", logo: redshiftLogo },
   { name: "Apache Spark", logo: sparkLogo },
   { name: "Airflow", logo: airflowLogo },
-  { name: "dbt", icon: Layers },
+  { name: "dbt", logo: dbtLogo },
   { name: "Kafka", logo: kafkaLogo },
   { name: "Flink", logo: flinkLogo },
   { name: "Tableau", logo: tableauLogo },
   { name: "Power BI", logo: powerbiLogo },
   { name: "Looker", logo: lookerLogo },
   { name: "Delta Lake", logo: deltalakeLogo },
-  { name: "Iceberg", icon: Database },
-  { name: "Glue", logo: awsLogo },
-  { name: "Kinesis", logo: awsLogo },
-  { name: "Great Expectations", icon: CheckSquare },
-  { name: "DataHub", icon: Globe },
+  { name: "Iceberg", logo: icebergLogo },
+  { name: "Glue", logo: glueLogo },
+  { name: "Kinesis", logo: kinesisLogo },
+  { name: "Great Expectations", logo: greatExpectationsLogo },
+  { name: "DataHub", logo: datahubLogo },
 ];
 
-// Compliance Frameworks with icons
+// Compliance Frameworks with appropriate icons
 export const complianceFrameworkItems: PlatformItem[] = [
   { name: "SOC 2", icon: Shield },
   { name: "HIPAA", icon: FileCheck },
@@ -64,7 +66,7 @@ export const complianceFrameworkItems: PlatformItem[] = [
   { name: "ISO 27001", icon: Shield },
   { name: "NIST", icon: Server },
   { name: "CIS Benchmarks", icon: Gauge },
-  { name: "FedRAMP", icon: Cloud },
+  { name: "FedRAMP", icon: Building2 },
 ];
 
 interface PlatformBadgeProps {
@@ -82,6 +84,10 @@ export const PlatformBadge: React.FC<PlatformBadgeProps> = ({ platform, index, v
     ? "hover:border-green-500/50"
     : "hover:border-red-500/50";
 
+  const iconColorClass = variant === "data"
+    ? "text-green-600 group-hover:text-green-500"
+    : "text-red-600 group-hover:text-red-500";
+
   return (
     <div
       className={`flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r ${gradientClass} border border-border ${borderHoverClass} transition-all duration-300 cursor-default group`}
@@ -93,7 +99,7 @@ export const PlatformBadge: React.FC<PlatformBadgeProps> = ({ platform, index, v
           className="w-5 h-5 object-contain group-hover:scale-110 transition-transform"
         />
       ) : platform.icon ? (
-        <platform.icon className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+        <platform.icon className={`w-5 h-5 ${iconColorClass} transition-colors`} />
       ) : null}
       <span className="font-medium text-foreground whitespace-nowrap">{platform.name}</span>
     </div>
