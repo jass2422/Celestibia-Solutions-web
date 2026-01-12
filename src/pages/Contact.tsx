@@ -49,13 +49,13 @@ const Contact = () => {
     message: "",
   });
 
-  const contactButton = useABTest('contact_button');
+  const contactButton = useABTest("contact_button");
   const { sendBothEmails } = useEmailJS();
 
   // Track page view for contact form experiment
   useEffect(() => {
     if (contactButton.experiment) {
-      contactButton.trackConversion('page_view');
+      contactButton.trackConversion("page_view");
     }
   }, [contactButton.experiment]);
 
@@ -64,7 +64,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     // Track form submission as conversion
-    await contactButton.trackConversion('form_submit');
+    await contactButton.trackConversion("form_submit");
 
     // Save to database
     const result = await saveContact(formData);
@@ -111,7 +111,7 @@ const Contact = () => {
   return (
     <main className="min-h-screen">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-hero">
         <div className="container mx-auto px-4">
@@ -125,12 +125,10 @@ const Contact = () => {
               Contact Us
             </span>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Let's Build Something{" "}
-              <span className="text-gradient">Extraordinary</span>
+              Let's Build Something <span className="text-gradient">Extraordinary</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Ready to transform your business with cloud technology? Get in touch 
-              and let's discuss how we can help.
+              Ready to transform your business with cloud technology? Get in touch and let's discuss how we can help.
             </p>
           </motion.div>
         </div>
@@ -147,9 +145,7 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-heading text-3xl font-bold mb-6">
-                Send Us a Message
-              </h2>
+              <h2 className="font-heading text-3xl font-bold mb-6">Send Us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -204,31 +200,16 @@ const Contact = () => {
                     className="min-h-[150px] resize-none"
                   />
                 </div>
-                <Button
-                  type="submit"
-                  variant="gradient"
-                  size="lg"
-                  disabled={isSubmitting}
-                  className="w-full sm:w-auto"
-                >
+                <Button type="submit" variant="gradient" size="lg" disabled={isSubmitting} className="w-full sm:w-auto">
                   {isSubmitting ? (
                     "Sending..."
                   ) : (
                     <>
-                      {contactButton.isLoading 
-                        ? "Send Message" 
-                        : contactButton.getVariantValue()}
+                      {contactButton.isLoading ? "Send Message" : contactButton.getVariantValue()}
                       <Send className="w-4 h-4 ml-2" />
                     </>
                   )}
                 </Button>
-
-                {/* A/B Test Indicator (only in dev) */}
-                {import.meta.env.DEV && (
-                  <p className="text-xs text-muted-foreground/50">
-                    A/B Test: Button={contactButton.variant || 'loading'}
-                  </p>
-                )}
               </form>
             </motion.div>
 
@@ -239,12 +220,9 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-heading text-3xl font-bold mb-6">
-                Get in Touch
-              </h2>
+              <h2 className="font-heading text-3xl font-bold mb-6">Get in Touch</h2>
               <p className="text-muted-foreground mb-8">
-                We're here to help and answer any questions you might have. 
-                We look forward to hearing from you.
+                We're here to help and answer any questions you might have. We look forward to hearing from you.
               </p>
 
               <div className="space-y-6">
@@ -272,8 +250,8 @@ const Contact = () => {
                   <h3 className="font-semibold text-lg">Global Reach</h3>
                 </div>
                 <p className="text-primary-foreground/80">
-                  We work with clients across India, Middle East, APAC, and beyond. 
-                  Let's connect and discuss your project, regardless of timezone.
+                  We work with clients across India, Middle East, APAC, and beyond. Let's connect and discuss your
+                  project, regardless of timezone.
                 </p>
               </div>
             </motion.div>
