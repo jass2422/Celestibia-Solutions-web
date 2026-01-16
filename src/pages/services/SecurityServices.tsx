@@ -4,20 +4,12 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CTA } from "@/components/home/CTA";
 import { 
-  Shield, 
   ArrowRight, 
   CheckCircle,
   Lock,
   Eye,
-  AlertTriangle,
-  FileCheck,
-  Search,
   ShieldCheck,
-  UserCheck,
-  Key,
-  Network,
   Bug,
-  Radio,
   Fingerprint,
   Scan,
   AlertCircle,
@@ -26,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SecurityHeroGraphics } from "@/components/graphics/HeroGraphics";
 import { complianceFrameworkItems, PlatformBadge } from "@/components/logos/PlatformLogos";
+import { ServiceIconBox } from "@/components/icons/ServiceIcons";
 
 const cloudSecurityFeatures = [
   {
@@ -94,9 +87,8 @@ const SecurityServices = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-red-500 to-orange-500 mb-6"
             >
-              <Shield className="w-10 h-10 text-white" />
+              <ServiceIconBox service="security" size="hero" className="mx-auto mb-6" />
             </motion.div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Security{" "}

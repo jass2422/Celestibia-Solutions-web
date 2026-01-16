@@ -9,12 +9,12 @@ import {
   Container,
   Workflow,
   Settings,
-  Repeat,
   Wrench,
   Cog
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DevOpsHeroGraphics } from "@/components/graphics/HeroGraphics";
+import { ServiceIconBox } from "@/components/icons/ServiceIcons";
 
 // Import original logos
 import gitlabLogo from "@/assets/logos/gitlab.png";
@@ -100,9 +100,8 @@ const DevOpsServices = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 mb-6"
             >
-              <Workflow className="w-10 h-10 text-white" />
+              <ServiceIconBox service="devops" size="hero" className="mx-auto mb-6" />
             </motion.div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               DevOps{" "}

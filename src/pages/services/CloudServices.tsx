@@ -4,28 +4,22 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CTA } from "@/components/home/CTA";
 import { 
-  Cloud, 
   Server, 
   ArrowRight, 
   CheckCircle,
   Zap,
   Shield,
   TrendingUp,
-  Database,
-  RefreshCw,
-  Settings,
-  Layers,
-  HardDrive,
   Globe,
   Lock,
   Cpu,
-  Activity
+  Activity,
+  Layers
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FloatingIcons, GradientOrbs, AnimatedNodes, CircuitLines } from "@/components/graphics/FloatingIcons";
-import { TechIllustration } from "@/components/graphics/TechIllustration";
-import { AnimatedBackground } from "@/components/graphics/AnimatedBackground";
-import { FloatingTechOrbs, ServiceGridBackground, AnimatedStatsSection } from "@/components/graphics/ServiceGraphics";
+import { FloatingTechOrbs, ServiceGridBackground } from "@/components/graphics/ServiceGraphics";
+import { ServiceIconBox } from "@/components/icons/ServiceIcons";
 
 // Import original logos
 import awsSvg from "@/assets/logos/aws.svg";
@@ -123,9 +117,7 @@ const CloudServices = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 mb-6">
-              <Cloud className="w-10 h-10 text-white" />
-            </div>
+            <ServiceIconBox service="cloud" size="hero" className="mx-auto mb-6" />
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Core Cloud{" "}
               <span className="text-gradient">Services</span>
@@ -280,7 +272,7 @@ const CloudServices = () => {
                     <div className="text-sm text-muted-foreground">Uptime SLA</div>
                   </div>
                   <div className="text-center p-6 rounded-xl bg-background">
-                    <Cloud className="w-8 h-8 text-primary mx-auto mb-2" />
+                    <ServiceIconBox service="cloud" size="sm" className="mx-auto mb-2" />
                     <div className="text-3xl font-bold text-foreground">500+</div>
                     <div className="text-sm text-muted-foreground">Migrations</div>
                   </div>
