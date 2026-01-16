@@ -1,55 +1,48 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { 
-  Cloud, 
-  GitBranch, 
-  Database, 
-  Shield, 
-  Brain, 
-  Monitor,
-  ArrowUpRight
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useABTest } from "@/hooks/useABTest";
 import { HexagonPattern, IsometricIcons } from "@/components/graphics/InfraCloudStyle";
+import { serviceIcons } from "@/components/icons/ServiceIcons";
 
 const services = [
   {
-    icon: Cloud,
+    icon: serviceIcons.cloud,
     title: "Cloud Services",
     description: "Cloud Infrastructure, Migration, Architecture Design, and Cost Optimization across AWS, Azure, and GCP.",
     href: "/services/cloud",
     color: "from-blue-500 to-cyan-500",
   },
   {
-    icon: GitBranch,
+    icon: serviceIcons.devops,
     title: "DevOps Solutions",
     description: "Managed Kubernetes, CI/CD Pipelines, Infrastructure Automation, and DevOps as a Service.",
     href: "/services/devops",
     color: "from-purple-500 to-pink-500",
   },
   {
-    icon: Database,
+    icon: serviceIcons.dataEngineering,
     title: "Data Engineering",
     description: "Data Pipelines, Warehousing, Real-Time Processing, and Data Governance & Quality.",
     href: "/services/data-engineering",
     color: "from-green-500 to-emerald-500",
   },
   {
-    icon: Brain,
+    icon: serviceIcons.aiml,
     title: "AI & Machine Learning",
     description: "AI-Powered Chatbots, ML Model Development, Computer Vision, NLP, and AI Strategy Consulting.",
     href: "/services/ai-ml",
     color: "from-violet-500 to-purple-500",
   },
   {
-    icon: Monitor,
+    icon: serviceIcons.application,
     title: "Application Services",
     description: "Monolith to Microservices, Application Replatforming, and Performance Monitoring.",
     href: "/services/application",
     color: "from-orange-500 to-yellow-500",
   },
   {
-    icon: Shield,
+    icon: serviceIcons.security,
     title: "Security Services",
     description: "Cloud Security, DevSecOps, VAPT, Compliance Automation, and Managed Detection & Response.",
     href: "/services/security",
@@ -151,8 +144,8 @@ export const Services = () => {
                 className="block h-full p-8 rounded-2xl bg-background border border-border hover:border-coral/30 hover:shadow-xl transition-all duration-300"
               >
                 {/* Icon */}
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <service.icon className="w-7 h-7 text-white" />
+                <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg p-2">
+                  <img src={service.icon} alt={service.title} className="w-10 h-10 object-contain" />
                 </div>
 
                 {/* Content */}

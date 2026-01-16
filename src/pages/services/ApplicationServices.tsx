@@ -4,23 +4,21 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CTA } from "@/components/home/CTA";
 import { 
-  Monitor, 
   ArrowRight, 
   Boxes,
   Gauge,
   Activity,
   RefreshCw,
   Layers,
-  Zap,
   Eye,
   Bell,
-  BarChart3,
   Database,
   Cloud,
   Timer
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ApplicationHeroGraphics } from "@/components/graphics/HeroGraphics";
+import { ServiceIconBox } from "@/components/icons/ServiceIcons";
 
 const modernizationFeatures = [
   {
@@ -110,9 +108,8 @@ const ApplicationServices = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500 to-yellow-500 mb-6"
             >
-              <Monitor className="w-10 h-10 text-white" />
+              <ServiceIconBox service="application" size="hero" className="mx-auto mb-6" />
             </motion.div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Application Modernization{" "}

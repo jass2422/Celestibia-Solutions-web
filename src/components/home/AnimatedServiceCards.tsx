@@ -1,36 +1,31 @@
 import { motion } from "framer-motion";
-import { 
-  Server, 
-  GitBranch, 
-  Shield, 
-  Activity,
-  ArrowRight
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { serviceIcons } from "@/components/icons/ServiceIcons";
 
 const services = [
   {
-    icon: Server,
+    icon: serviceIcons.cloud,
     title: "Cloud Infrastructure",
     description: "AWS, Azure, GCP managed services with 99.9% uptime",
     features: ["Migration", "Architecture", "Cost Optimization"],
     gradient: "from-blue-500 to-cyan-500"
   },
   {
-    icon: GitBranch,
+    icon: serviceIcons.devops,
     title: "DevOps Automation",
     description: "CI/CD pipelines and Kubernetes management",
     features: ["CI/CD", "K8s", "IaC"],
     gradient: "from-purple-500 to-pink-500"
   },
   {
-    icon: Shield,
+    icon: serviceIcons.security,
     title: "Security First",
     description: "Zero trust architecture and compliance automation",
     features: ["VAPT", "DevSecOps", "SOC"],
     gradient: "from-red-500 to-orange-500"
   },
   {
-    icon: Activity,
+    icon: serviceIcons.dataAnalysis,
     title: "Observability",
     description: "Real-time monitoring and intelligent alerting",
     features: ["APM", "Logging", "Tracing"],
@@ -113,9 +108,9 @@ export const AnimatedServiceCards = () => {
                   <motion.div 
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.5 }}
-                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 shadow-lg`}
+                    className="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-4 shadow-lg p-2"
                   >
-                    <service.icon className="w-7 h-7 text-white drop-shadow-md" />
+                    <img src={service.icon} alt={service.title} className="w-10 h-10 object-contain" />
                   </motion.div>
                   
                   <h3 className="font-heading text-xl font-bold mb-2 group-hover:text-coral transition-colors">

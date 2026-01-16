@@ -6,7 +6,6 @@ import { CTA } from "@/components/home/CTA";
 import { 
   Database, 
   ArrowRight, 
-  CheckCircle,
   BarChart3,
   Workflow,
   Shield,
@@ -19,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { DataHeroGraphics } from "@/components/graphics/HeroGraphics";
 import { AnimatedBackground } from "@/components/graphics/AnimatedBackground";
 import { dataEngineeringPlatforms, PlatformBadge } from "@/components/logos/PlatformLogos";
+import { ServiceIconBox } from "@/components/icons/ServiceIcons";
 
 // Import illustrations
 import dataPrepWorkflow from "@/assets/illustrations/data-prep-workflow-orchestration.svg";
@@ -96,9 +96,8 @@ const DataEngineering = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 mb-6"
             >
-              <Database className="w-10 h-10 text-white" />
+              <ServiceIconBox service="dataEngineering" size="hero" className="mx-auto mb-6" />
             </motion.div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Data Engineering{" "}
