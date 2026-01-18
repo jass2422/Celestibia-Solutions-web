@@ -6,14 +6,11 @@ import { Calendar, User, ArrowRight, Clock, Loader2, Image as ImageIcon, BookOpe
 import { Link } from "react-router-dom";
 import { getBlogs, BlogPost } from "@/lib/storage";
 import { CloudHeroGraphics } from "@/components/graphics/HeroGraphics";
-
 const categories = ["All", "Cloud", "DevOps", "Security", "Data", "AI"];
-
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     const fetchBlogs = async () => {
       const blogs = await getBlogs();
@@ -22,33 +19,24 @@ const Blog = () => {
     };
     fetchBlogs();
   }, []);
-
-  const filteredPosts = selectedCategory === "All" 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
-
-  return (
-    <main className="min-h-screen">
+  const filteredPosts = selectedCategory === "All" ? blogPosts : blogPosts.filter(post => post.category === selectedCategory);
+  return <main className="min-h-screen">
       <Header />
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-hero relative overflow-hidden">
         <CloudHeroGraphics />
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-500 mb-6"
-            >
-              <BookOpen className="w-10 h-10 text-white" />
-            </motion.div>
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.6
+        }} className="max-w-4xl mx-auto text-center">
+            
             <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-sm font-medium text-foreground mb-4 ml-4">
               Blog
             </span>
@@ -67,12 +55,15 @@ const Blog = () => {
       <section className="py-20 bg-card">
         <div className="container mx-auto px-4">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               Latest Articles
             </h2>
@@ -82,69 +73,54 @@ const Blog = () => {
           </motion.div>
 
           {/* Categories */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-wrap gap-3 justify-center mb-12"
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  category === selectedCategory
-                    ? "bg-gradient-primary text-primary-foreground shadow-lg scale-105"
-                    : "bg-secondary text-foreground hover:bg-coral hover:text-primary-foreground hover:scale-105"
-                }`}
-              >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.5
+        }} className="flex flex-wrap gap-3 justify-center mb-12">
+            {categories.map(category => <button key={category} onClick={() => setSelectedCategory(category)} className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${category === selectedCategory ? "bg-gradient-primary text-primary-foreground shadow-lg scale-105" : "bg-secondary text-foreground hover:bg-coral hover:text-primary-foreground hover:scale-105"}`}>
                 {category}
-              </button>
-            ))}
+              </button>)}
           </motion.div>
 
           {/* Blog Grid */}
-          {isLoading ? (
-            <div className="flex items-center justify-center py-20">
+          {isLoading ? <div className="flex items-center justify-center py-20">
               <Loader2 className="w-8 h-8 animate-spin text-coral" />
-            </div>
-          ) : filteredPosts.length === 0 ? (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-20"
-            >
+            </div> : filteredPosts.length === 0 ? <motion.div initial={{
+          opacity: 0
+        }} animate={{
+          opacity: 1
+        }} className="text-center py-20">
               <div className="w-20 h-20 rounded-full bg-secondary mx-auto mb-4 flex items-center justify-center">
                 <BookOpen className="w-10 h-10 text-muted-foreground" />
               </div>
               <p className="text-muted-foreground text-lg">No blog posts found.</p>
-            </motion.div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post, index) => (
-                <motion.article
-                  key={post.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  whileHover={{ y: -8 }}
-                  className="bg-background rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:border-coral/30 transition-all duration-300 group"
-                >
+            </motion.div> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPosts.map((post, index) => <motion.article key={post.id} initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5,
+            delay: index * 0.05
+          }} whileHover={{
+            y: -8
+          }} className="bg-background rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:border-coral/30 transition-all duration-300 group">
                   {/* Featured Image */}
                   <Link to={`/blog/${post.slug}`} className="block relative overflow-hidden aspect-video">
-                    {post.image_url ? (
-                      <img 
-                        src={post.image_url} 
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-primary/20 to-coral/20 flex items-center justify-center">
+                    {post.image_url ? <img src={post.image_url} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" /> : <div className="w-full h-full bg-gradient-to-br from-primary/20 to-coral/20 flex items-center justify-center">
                         <ImageIcon className="w-12 h-12 text-muted-foreground/50" />
-                      </div>
-                    )}
+                      </div>}
                     {/* Category overlay */}
                     <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-background/90 backdrop-blur-sm text-xs font-medium text-foreground shadow-lg">
                       {post.category}
@@ -177,25 +153,18 @@ const Blog = () => {
                         <Calendar className="w-4 h-4" />
                         {post.date}
                       </span>
-                      <Link
-                        to={`/blog/${post.slug}`}
-                        className="flex items-center gap-1 text-coral font-semibold text-sm hover:gap-2 transition-all group-hover:text-coral"
-                      >
+                      <Link to={`/blog/${post.slug}`} className="flex items-center gap-1 text-coral font-semibold text-sm hover:gap-2 transition-all group-hover:text-coral">
                         Read More
                         <ArrowRight className="w-4 h-4" />
                       </Link>
                     </div>
                   </div>
-                </motion.article>
-              ))}
-            </div>
-          )}
+                </motion.article>)}
+            </div>}
         </div>
       </section>
 
       <Footer />
-    </main>
-  );
+    </main>;
 };
-
 export default Blog;
