@@ -9,7 +9,8 @@ const services = [
   {
     icon: serviceIcons.cloud,
     title: "Cloud Services",
-    description: "Cloud Infrastructure, Migration, Architecture Design, and Cost Optimization across AWS, Azure, and GCP.",
+    description:
+      "Cloud Infrastructure, Migration, Architecture Design, and Cost Optimization across AWS, Azure, and GCP.",
     href: "/services/cloud",
     color: "from-blue-500 to-cyan-500",
   },
@@ -70,27 +71,27 @@ const itemVariants = {
 };
 
 export const Services = () => {
-  const { getVariantValue, trackConversion } = useABTest('services_headline');
-  const headline = getVariantValue() || 'End-to-End Cloud & DevOps Solutions';
+  const { getVariantValue, trackConversion } = useABTest("services_headline");
+  const headline = getVariantValue() || "End-to-End Cloud & DevOps Solutions";
 
   return (
     <section className="py-24 bg-card relative overflow-hidden">
       {/* InfraCloud-style backgrounds */}
       <HexagonPattern />
       <IsometricIcons className="opacity-30" />
-      
+
       {/* Gradient orbs */}
-      <motion.div 
+      <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
         transition={{ duration: 10, repeat: Infinity }}
-        className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-gradient-to-br from-[#F97316]/20 to-[#8B5CF6]/10 rounded-full blur-[100px]" 
+        className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-gradient-to-br from-[#F97316]/20 to-[#8B5CF6]/10 rounded-full blur-[100px]"
       />
-      <motion.div 
+      <motion.div
         animate={{ scale: [1.2, 1, 1.2], opacity: [0.15, 0.25, 0.15] }}
         transition={{ duration: 12, repeat: Infinity }}
-        className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-gradient-to-br from-[#8B5CF6]/20 to-[#06B6D4]/10 rounded-full blur-[100px]" 
+        className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-gradient-to-br from-[#8B5CF6]/20 to-[#06B6D4]/10 rounded-full blur-[100px]"
       />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -100,27 +101,20 @@ export const Services = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-sm font-medium text-foreground mb-4">
-            Our Services
-          </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            {headline.includes('End-to-End') ? (
+            {headline.includes("End-to-End") ? (
               <>
-                End-to-End{" "}
-                <span className="text-gradient">Cloud & DevOps</span>{" "}
-                Solutions
+                End-to-End <span className="text-gradient">Cloud & DevOps</span> Solutions
               </>
             ) : (
               <>
-                Comprehensive{" "}
-                <span className="text-gradient">Cloud & DevOps</span>{" "}
-                Services
+                Comprehensive <span className="text-gradient">Cloud & DevOps</span> Services
               </>
             )}
           </h2>
           <p className="text-lg text-muted-foreground">
-            From cloud migration to AI-powered automation, we deliver comprehensive 
-            solutions that drive digital transformation.
+            From cloud migration to AI-powered automation, we deliver comprehensive solutions that drive digital
+            transformation.
           </p>
         </motion.div>
 
@@ -133,14 +127,10 @@ export const Services = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group"
-            >
+            <motion.div key={index} variants={itemVariants} className="group">
               <Link
                 to={service.href}
-                onClick={() => trackConversion('service_click')}
+                onClick={() => trackConversion("service_click")}
                 className="block h-full p-8 rounded-2xl bg-background border border-border hover:border-coral/30 hover:shadow-xl transition-all duration-300"
               >
                 {/* Icon */}
@@ -153,9 +143,7 @@ export const Services = () => {
                   {service.title}
                   <ArrowUpRight className="w-4 h-4 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300 text-coral" />
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
+                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
               </Link>
             </motion.div>
           ))}
