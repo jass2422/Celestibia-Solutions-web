@@ -3,17 +3,7 @@ import { Link } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CTA } from "@/components/home/CTA";
-import { 
-  ArrowRight, 
-  Cpu,
-  Layers,
-  Lightbulb,
-  Bot,
-  Wand2,
-  Network,
-  ScanEye,
-  Languages
-} from "lucide-react";
+import { ArrowRight, Cpu, Layers, Lightbulb, Bot, Wand2, Network, ScanEye, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AIMLHeroGraphics } from "@/components/graphics/HeroGraphics";
 import { ServiceIconBox } from "@/components/icons/ServiceIcons";
@@ -28,42 +18,45 @@ const features = [
   {
     icon: Bot,
     title: "AI-Powered Chatbots",
-    description: "Custom intelligent virtual assistants for customer support, internal tools, and lead generation — integrated with OpenAI, Dialogflow, or Rasa."
+    description:
+      "Custom intelligent virtual assistants for customer support, internal tools, and lead generation — integrated with OpenAI, Dialogflow, or Rasa.",
   },
   {
     icon: Wand2,
     title: "Generative AI Solutions",
-    description: "Implementation of models like GPT, DALL·E, and Claude for content generation, summarization, translation, and automation."
+    description:
+      "Implementation of models like GPT, DALL·E, and Claude for content generation, summarization, translation, and automation.",
   },
   {
     icon: Network,
     title: "Machine Learning Model Development",
-    description: "Supervised and unsupervised model training for predictions, classification, recommendation systems, and more."
+    description:
+      "Supervised and unsupervised model training for predictions, classification, recommendation systems, and more.",
   },
   {
     icon: Layers,
     title: "AI Integration Services",
-    description: "Embedding AI into existing applications, CRMs, ERPs, or customer workflows."
+    description: "Embedding AI into existing applications, CRMs, ERPs, or customer workflows.",
   },
   {
     icon: ScanEye,
     title: "Computer Vision",
-    description: "Image recognition, object detection, and OCR using TensorFlow, OpenCV, and PyTorch."
+    description: "Image recognition, object detection, and OCR using TensorFlow, OpenCV, and PyTorch.",
   },
   {
     icon: Languages,
     title: "Natural Language Processing (NLP)",
-    description: "Sentiment analysis, named entity recognition, text classification, and summarization."
+    description: "Sentiment analysis, named entity recognition, text classification, and summarization.",
   },
   {
     icon: Cpu,
     title: "Data Engineering & Model Ops",
-    description: "Data pipelines, model deployment, and monitoring using MLFlow, Airflow, and SageMaker."
+    description: "Data pipelines, model deployment, and monitoring using MLFlow, Airflow, and SageMaker.",
   },
   {
     icon: Lightbulb,
     title: "AI/ML Strategy Consulting",
-    description: "Advisory on use cases, feasibility, and roadmap to adopt AI in your enterprise."
+    description: "Advisory on use cases, feasibility, and roadmap to adopt AI in your enterprise.",
   },
 ];
 
@@ -78,7 +71,7 @@ const AIMLServices = () => {
   return (
     <main className="min-h-screen">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-hero relative overflow-hidden">
         <AIMLHeroGraphics />
@@ -89,20 +82,17 @@ const AIMLServices = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
               <ServiceIconBox service="aiml" size="hero" className="mx-auto mb-6" />
             </motion.div>
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              AI & ML{" "}
-              <span className="text-gradient">Services</span>
-            </h1>
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">AI & ML </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Unlock the power of artificial intelligence to drive innovation, 
-              automate processes, and create intelligent experiences.
+              Unlock the power of artificial intelligence to drive innovation, automate processes, and create
+              intelligent experiences.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="gradient" size="lg" asChild>
@@ -128,9 +118,7 @@ const AIMLServices = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              ML Infrastructure Stack
-            </h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">ML Infrastructure Stack</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               End-to-end machine learning infrastructure for production-grade AI systems
             </p>
@@ -138,10 +126,22 @@ const AIMLServices = () => {
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {[
-              { img: modelTraining, title: "Model Training Infrastructure", desc: "Scalable training pipelines with GPU clusters" },
+              {
+                img: modelTraining,
+                title: "Model Training Infrastructure",
+                desc: "Scalable training pipelines with GPU clusters",
+              },
               { img: modelServing, title: "Model Serving", desc: "Low-latency inference at scale" },
-              { img: modelRegistry, title: "Model Registry & Metadata", desc: "Version control and experiment tracking" },
-              { img: modelObservability, title: "Observability & Feedback Loops", desc: "Monitor model performance and drift" },
+              {
+                img: modelRegistry,
+                title: "Model Registry & Metadata",
+                desc: "Version control and experiment tracking",
+              },
+              {
+                img: modelObservability,
+                title: "Observability & Feedback Loops",
+                desc: "Monitor model performance and drift",
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -169,9 +169,7 @@ const AIMLServices = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              AI/ML Capabilities
-            </h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">AI/ML Capabilities</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               From chatbots to computer vision, we deliver cutting-edge AI solutions
             </p>
@@ -207,12 +205,8 @@ const AIMLServices = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              AI Use Cases
-            </h2>
-            <p className="text-muted-foreground">
-              Real-world applications driving business value
-            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">AI Use Cases</h2>
+            <p className="text-muted-foreground">Real-world applications driving business value</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
