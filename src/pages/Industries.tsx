@@ -151,6 +151,9 @@ const IndustriesPage = () => {
             }}
             className="max-w-4xl mx-auto text-center"
           >
+            <span className="inline-block px-4 py-1.5 rounded-full bg-coral/20 text-coral text-sm font-medium mb-4 ml-4">
+              Industries
+            </span>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Transforming Industries with <span className="text-gradient">Cloud Innovation</span>
             </h1>
@@ -185,9 +188,6 @@ const IndustriesPage = () => {
             }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-coral/20 text-coral text-sm font-medium mb-4">
-              Sectors We Serve
-            </span>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               Industries We <span className="text-gradient">Serve</span>
             </h2>
