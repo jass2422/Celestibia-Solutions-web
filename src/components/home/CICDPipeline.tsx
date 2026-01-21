@@ -10,38 +10,32 @@ import slackSvg from "@/assets/logos/slack.svg";
 
 const pipelineSteps = [
   {
-    
     title: "Code Commit",
     description: "Developer pushes code to repository",
     logo: githubSvg,
   },
   {
-    
     title: "Build & Test",
     description: "Automated builds and unit tests",
     logo: jenkinsLogo,
   },
   {
-    
     title: "Code Quality",
     description: "Static analysis and security scan",
     logo: null, // Will use icon instead
     icon: ShieldCheck,
   },
   {
-   
     title: "Containerize",
     description: "Build Docker image and push to registry",
     logo: dockerSvg,
   },
   {
-    
     title: "Deploy",
     description: "Deploy to Kubernetes cluster",
     logo: kubernetesSvg,
   },
   {
-   
     title: "Notify",
     description: "Team notification on success/failure",
     logo: slackSvg,
@@ -86,27 +80,19 @@ export const CICDPipeline = () => {
                       className="w-20 h-20 rounded-2xl bg-white shadow-lg flex items-center justify-center border border-gray-100"
                     >
                       {step.logo ? (
-                        <img 
-                          src={step.logo} 
-                          alt={step.title} 
-                          className="w-12 h-12 object-contain"
-                        />
+                        <img src={step.logo} alt={step.title} className="w-12 h-12 object-contain" />
                       ) : step.icon ? (
                         <step.icon className="w-12 h-12 text-primary" />
                       ) : null}
                     </motion.div>
-                    
+
                     {/* Step Number Badge */}
-            
+                  </div>
 
                   {/* Step Info */}
                   <div className="text-center max-w-[140px]">
-                    <h3 className="font-heading font-bold text-foreground mb-1 text-sm">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground leading-tight">
-                      {step.description}
-                    </p>
+                    <h3 className="font-heading font-bold text-foreground mb-1 text-sm">{step.title}</h3>
+                    <p className="text-xs text-muted-foreground leading-tight">{step.description}</p>
                   </div>
                 </motion.div>
 
@@ -143,11 +129,7 @@ export const CICDPipeline = () => {
                 <div className="relative flex-shrink-0">
                   <div className="w-16 h-16 rounded-xl bg-white shadow-md flex items-center justify-center border border-gray-100">
                     {step.logo ? (
-                      <img 
-                        src={step.logo} 
-                        alt={step.title} 
-                        className="w-10 h-10 object-contain"
-                      />
+                      <img src={step.logo} alt={step.title} className="w-10 h-10 object-contain" />
                     ) : step.icon ? (
                       <step.icon className="w-10 h-10 text-primary" />
                     ) : null}
@@ -159,12 +141,8 @@ export const CICDPipeline = () => {
 
                 {/* Step Info */}
                 <div className="flex-1">
-                  <h3 className="font-heading font-bold text-foreground text-sm">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    {step.description}
-                  </p>
+                  <h3 className="font-heading font-bold text-foreground text-sm">{step.title}</h3>
+                  <p className="text-xs text-muted-foreground">{step.description}</p>
                 </div>
 
                 {/* Arrow */}
