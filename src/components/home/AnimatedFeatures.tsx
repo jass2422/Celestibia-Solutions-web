@@ -1,53 +1,42 @@
 import { motion } from "framer-motion";
-import { 
-  Cloud, 
-  Code, 
-  Database, 
-  Shield, 
-  Cpu, 
-  Globe, 
-  Zap, 
-  BarChart3,
-  Users,
-  Rocket
-} from "lucide-react";
+import { Cloud, Code, Database, Shield, Cpu, Globe, Zap, BarChart3, Users, Rocket } from "lucide-react";
 
 const capabilities = [
   {
     icon: Cloud,
     title: "Cloud Infrastructure",
     description: "AWS, Azure, GCP expertise",
-    gradient: "from-blue-500 to-cyan-500"
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
     icon: Code,
     title: "Modern Development",
     description: "Full-stack solutions",
-    gradient: "from-purple-500 to-pink-500"
+    gradient: "from-purple-500 to-pink-500",
   },
   {
     icon: Database,
     title: "Data Engineering",
     description: "Pipelines & analytics",
-    gradient: "from-green-500 to-emerald-500"
+    gradient: "from-green-500 to-emerald-500",
   },
   {
     icon: Shield,
     title: "Security First",
     description: "Zero trust architecture",
-    gradient: "from-red-500 to-orange-500"
+    gradient: "from-red-500 to-orange-500",
   },
   {
     icon: Cpu,
     title: "AI & ML",
     description: "Intelligent automation",
-    gradient: "from-violet-500 to-purple-500"
+    gradient: "from-violet-500 to-purple-500",
   },
   {
     icon: Globe,
     title: "Global Scale",
     description: "Multi-region deployments",
-    gradient: "from-teal-500 to-cyan-500"
+    gradient: "from-teal-500 to-cyan-500",
   },
 ];
 
@@ -64,33 +53,33 @@ export const AnimatedFeatures = () => {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={{ 
+          animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
-            scale: [1, 1.2, 1]
+            scale: [1, 1.2, 1],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-10 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"
         />
         <motion.div
-          animate={{ 
+          animate={{
             x: [0, -80, 0],
             y: [0, 60, 0],
-            scale: [1.2, 1, 1.2]
+            scale: [1.2, 1, 1.2],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-20 right-10 w-96 h-96 bg-coral/5 rounded-full blur-3xl"
         />
         <motion.div
-          animate={{ 
-            rotate: [0, 360]
+          animate={{
+            rotate: [0, 360],
           }}
           transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-border/30 rounded-full"
         />
         <motion.div
-          animate={{ 
-            rotate: [360, 0]
+          animate={{
+            rotate: [360, 0],
           }}
           transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-border/20 rounded-full"
@@ -104,12 +93,8 @@ export const AnimatedFeatures = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-sm font-medium text-foreground mb-4">
-            Our Capabilities
-          </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Technology That{" "}
-            <span className="text-gradient">Transforms</span>
+            Technology That <span className="text-gradient">Transforms</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             We blend creativity with technical excellence to deliver future-ready solutions
@@ -125,18 +110,20 @@ export const AnimatedFeatures = () => {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, type: "spring" }}
-              whileHover={{ 
-                scale: 1.08, 
+              whileHover={{
+                scale: 1.08,
                 y: -10,
-                transition: { duration: 0.2 }
+                transition: { duration: 0.2 },
               }}
               className="group relative"
             >
               <div className="p-6 rounded-2xl bg-card border border-border hover:border-coral/40 transition-all hover:shadow-xl text-center h-full">
                 {/* Glow effect on hover */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${cap.gradient} opacity-0 group-hover:opacity-10 transition-opacity`} />
-                
-                <motion.div 
+                <div
+                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${cap.gradient} opacity-0 group-hover:opacity-10 transition-opacity`}
+                />
+
+                <motion.div
                   whileHover={{ rotate: [0, -10, 10, 0] }}
                   transition={{ duration: 0.5 }}
                   className={`w-14 h-14 mx-auto rounded-xl bg-gradient-to-br ${cap.gradient} flex items-center justify-center mb-4`}
@@ -162,7 +149,7 @@ export const AnimatedFeatures = () => {
               Our <span className="text-gradient">Process</span>
             </h3>
           </div>
-          
+
           <div className="grid md:grid-cols-4 gap-6">
             {processSteps.map((step, index) => (
               <motion.div
@@ -174,10 +161,7 @@ export const AnimatedFeatures = () => {
                 className="relative"
               >
                 <div className="p-6 rounded-2xl bg-card border border-border hover:border-coral/30 transition-all group">
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="text-5xl font-bold text-gradient opacity-20 mb-4"
-                  >
+                  <motion.div whileHover={{ scale: 1.1 }} className="text-5xl font-bold text-gradient opacity-20 mb-4">
                     {step.step}
                   </motion.div>
                   <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -186,7 +170,7 @@ export const AnimatedFeatures = () => {
                   <h4 className="font-heading text-lg font-bold mb-2">{step.title}</h4>
                   <p className="text-sm text-muted-foreground">{step.desc}</p>
                 </div>
-                
+
                 {/* Connector line */}
                 {index < 3 && (
                   <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
