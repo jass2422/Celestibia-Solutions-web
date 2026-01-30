@@ -1,12 +1,12 @@
 import emailjs from '@emailjs/browser';
 
 // EmailJS Configuration - Replace these with your actual EmailJS credentials
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID = 'service_iu8lsoe';
+const EMAILJS_PUBLIC_KEY = 'V_bTyb00Go0J6ILzq';
 
 // Template IDs
-const VISITOR_TEMPLATE_ID = 'YOUR_VISITOR_TEMPLATE_ID'; // For confirmation to visitor
-const ADMIN_TEMPLATE_ID = 'YOUR_ADMIN_TEMPLATE_ID'; // For notification to admin
+const VISITOR_TEMPLATE_ID = 'service_iu8lsoe'; // For confirmation to visitor
+const ADMIN_TEMPLATE_ID = 'template_mtvgk0k'; // For notification to admin
 
 interface ContactFormData {
   name: string;

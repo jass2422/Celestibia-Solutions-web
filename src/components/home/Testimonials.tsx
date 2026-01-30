@@ -38,9 +38,7 @@ export const Testimonials = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-sm font-medium text-foreground mb-4">
-            Client Testimonials
-          </span>
+          
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             {headline.includes('Trusted') ? (
               <>

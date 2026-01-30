@@ -9,7 +9,6 @@ import { useAdminAuth } from "@/contexts/AdminAuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Lock, LogIn, Mail, Loader2 } from "lucide-react";
 import { HexagonPattern, IsometricIcons } from "@/components/graphics/InfraCloudStyle";
-
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,7 +45,6 @@ const AdminLogin = () => {
 
     setIsLoading(false);
   };
-
 
   if (authLoading) {
     return (
@@ -87,8 +85,6 @@ const AdminLogin = () => {
                   Enter your credentials to access the admin panel
                 </p>
               </div>
-
-
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>

@@ -6,7 +6,6 @@ import { CTA } from "@/components/home/CTA";
 import { 
   Database, 
   ArrowRight, 
-  CheckCircle,
   BarChart3,
   Workflow,
   Shield,
@@ -16,9 +15,10 @@ import {
   FileSearch
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FloatingIcons, GradientOrbs, GridPattern } from "@/components/graphics/FloatingIcons";
-import { DataFlowIllustration } from "@/components/graphics/TechIllustration";
+import { DataHeroGraphics } from "@/components/graphics/HeroGraphics";
 import { AnimatedBackground } from "@/components/graphics/AnimatedBackground";
+import { dataEngineeringPlatforms, PlatformBadge } from "@/components/logos/PlatformLogos";
+import { ServiceIconBox } from "@/components/icons/ServiceIcons";
 
 // Import illustrations
 import dataPrepWorkflow from "@/assets/illustrations/data-prep-workflow-orchestration.svg";
@@ -75,11 +75,7 @@ const dataScienceFeatures = [
   },
 ];
 
-const platforms = [
-  "Snowflake", "Databricks", "BigQuery", "Redshift", "Apache Spark",
-  "Airflow", "dbt", "Kafka", "Flink", "Tableau", "Power BI", "Looker",
-  "Delta Lake", "Iceberg", "Glue", "Kinesis", "Great Expectations", "DataHub"
-];
+// Using dataEngineeringPlatforms from PlatformLogos component
 
 const DataEngineering = () => {
   return (
@@ -88,19 +84,7 @@ const DataEngineering = () => {
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-hero relative overflow-hidden">
-        <GradientOrbs />
-        <FloatingIcons count={10} />
-        <GridPattern />
-        <div className="absolute inset-0 opacity-10">
-          <motion.div
-            animate={{ 
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute top-20 right-20 w-64 h-64 bg-green-500/20 rounded-full blur-3xl"
-          />
-        </div>
+        <DataHeroGraphics />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -108,9 +92,6 @@ const DataEngineering = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 mb-6">
-              <Database className="w-10 h-10 text-white" />
-            </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Data Engineering{" "}
               <span className="text-gradient">& Data Science</span>
@@ -257,7 +238,7 @@ const DataEngineering = () => {
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            {platforms.map((platform, index) => (
+            {dataEngineeringPlatforms.map((platform, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -265,9 +246,8 @@ const DataEngineering = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.03 }}
                 whileHover={{ scale: 1.05 }}
-                className="px-6 py-3 rounded-full bg-background border border-border hover:border-primary/50 transition-all cursor-default"
               >
-                <span className="font-medium text-foreground">{platform}</span>
+                <PlatformBadge platform={platform} index={index} variant="data" />
               </motion.div>
             ))}
           </div>

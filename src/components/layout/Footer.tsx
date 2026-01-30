@@ -29,9 +29,6 @@ const footerLinks = {
     name: "Blog",
     href: "/blog"
   }, {
-    name: "Careers",
-    href: "/careers"
-  }, {
     name: "Contact",
     href: "/contact"
   }],
@@ -58,7 +55,7 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
             <Link to="/" className="flex items-center gap-3 mb-6">
               <img src={logo} alt="Celestibia Solutions" className="h-14 w-auto rounded-lg bg-primary-foreground p-1" />
             </Link>
-            <p className="text-primary-foreground/80 mb-6 max-w-sm">Innovative cloud solutions for a connected world. Empowering businesses .</p>
+            <p className="text-primary-foreground/80 mb-6 max-w-sm">Innovative cloud solutions for a connected world.</p>
             <div className="space-y-3">
               <a href="mailto:info@celestibia.com" className="flex items-center gap-3 text-primary-foreground/80 hover:text-coral transition-colors">
                 <Mail className="w-5 h-5" />

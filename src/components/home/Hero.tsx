@@ -4,6 +4,7 @@ import { ArrowRight, Cloud, Shield, Zap, Server, Database, GitBranch, Code, Cpu,
 import { Button } from "@/components/ui/button";
 import { useABTest } from "@/hooks/useABTest";
 import { IsometricIcons, CircuitBoard, OrbitRings, WaveGradient } from "@/components/graphics/InfraCloudStyle";
+import heroVideo from "@/assets/illustrations/home-page.mp4";
 
 // InfraCloud-style floating icons with colors
 const floatingIcons = [
@@ -28,15 +29,21 @@ export const Hero = () => {
   const ctaText = getCtaText() || 'Get Started';
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20">
-      {/* Circuit Board Background */}
-      <CircuitBoard />
-      
-      {/* Orbit Rings - centered decoration */}
-      <OrbitRings />
-      
-      {/* Wave Gradient at bottom */}
-      <WaveGradient />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src={heroVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Dark Overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/70" />
 
       {/* InfraCloud-style Floating Icons */}
       {floatingIcons.map((item, index) => (
@@ -72,23 +79,6 @@ export const Hero = () => {
         </motion.div>
       ))}
 
-      {/* Gradient Orbs - InfraCloud style with orange/purple */}
-      <motion.div 
-        animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-gradient-to-br from-[#F97316]/30 to-[#8B5CF6]/20 rounded-full blur-[100px]" 
-      />
-      <motion.div 
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.25, 0.4, 0.25] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-gradient-to-br from-[#8B5CF6]/30 to-[#06B6D4]/20 rounded-full blur-[100px]" 
-      />
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-[#F97316]/20 to-[#EC4899]/10 rounded-full blur-[120px]" 
-      />
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
@@ -113,7 +103,8 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             onAnimationComplete={() => trackHeadlineView('view')}
-            className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
+            className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl text-white"
+            style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.8)' }}
           >
             {headlineText.includes('Cloud Solutions') ? (
               <>
@@ -135,7 +126,8 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-10 drop-shadow-lg"
+            style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.9)' }}
           >
             We blend creativity with technical excellence to deliver software solutions 
             that are not just functional, but future-ready. From cloud migration to 
@@ -173,11 +165,11 @@ export const Hero = () => {
               { number: "99.9%", label: "Uptime Guarantee" },
               { number: "24/7", label: "Expert Support" },
             ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
+              <div key={index} className="text-center drop-shadow-lg">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2" style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)' }}>
                   {stat.number}
                 </div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-sm text-white" style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.9)' }}>{stat.label}</div>
               </div>
             ))}
           </motion.div>

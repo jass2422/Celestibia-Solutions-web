@@ -9,11 +9,12 @@ import {
   Container,
   Workflow,
   Settings,
-  Repeat,
   Wrench,
   Cog
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DevOpsHeroGraphics } from "@/components/graphics/HeroGraphics";
+import { ServiceIconBox } from "@/components/icons/ServiceIcons";
 
 // Import original logos
 import gitlabLogo from "@/assets/logos/gitlab.png";
@@ -21,21 +22,18 @@ import awsSvg from "@/assets/logos/aws.svg";
 import gcpLogo from "@/assets/logos/google-cloud.png";
 import jenkinsLogo from "@/assets/logos/jenkins.png";
 import githubSvg from "@/assets/logos/github.svg";
-import argocdLogo from "@/assets/logos/argocd.png";
+import argocdLogo from "@/assets/logos/argocd-new.png";
 import grafanaLogo from "@/assets/logos/grafana.png";
 import prometheusLogo from "@/assets/logos/prometheus.png";
 import azureSvg from "@/assets/logos/azure.svg";
+import kubernetesSvg from "@/assets/logos/kubernetes.svg";
+import terraformSvg from "@/assets/logos/terraform.svg";
+import helmSvg from "@/assets/logos/helm.svg";
+import ansibleSvg from "@/assets/logos/ansible.svg";
+import dockerSvg from "@/assets/logos/docker.svg";
 
 // Import illustrations
 import sourceCodeCICD from "@/assets/illustrations/source-code-repo-ci-cd.svg";
-
-import {
-  KubernetesLogo,
-  DockerLogo,
-  TerraformLogo,
-  AnsibleLogo,
-  HelmLogo,
-} from "@/components/logos/TechLogos";
 
 const features = [
   {
@@ -65,22 +63,22 @@ const features = [
   },
 ];
 
-// Tools with original logos
+// Tools with correct logos
 const tools = [
-  { name: "GitLab", logo: gitlabLogo, isImage: true },
-  { name: "AWS", logo: awsSvg, isImage: true },
-  { name: "Azure", logo: azureSvg, isImage: true },
-  { name: "Google Cloud", logo: gcpLogo, isImage: true },
-  { name: "Jenkins", logo: jenkinsLogo, isImage: true },
-  { name: "GitHub Actions", logo: githubSvg, isImage: true },
-  { name: "ArgoCD", logo: argocdLogo, isImage: true },
-  { name: "Grafana", logo: grafanaLogo, isImage: true },
-  { name: "Prometheus", logo: prometheusLogo, isImage: true },
-  { name: "Kubernetes", Logo: KubernetesLogo, isImage: false },
-  { name: "Docker", Logo: DockerLogo, isImage: false },
-  { name: "Terraform", Logo: TerraformLogo, isImage: false },
-  { name: "Ansible", Logo: AnsibleLogo, isImage: false },
-  { name: "Helm", Logo: HelmLogo, isImage: false },
+  { name: "Kubernetes", logo: kubernetesSvg },
+  { name: "Docker", logo: dockerSvg },
+  { name: "Terraform", logo: terraformSvg },
+  { name: "Ansible", logo: ansibleSvg },
+  { name: "Helm", logo: helmSvg },
+  { name: "ArgoCD", logo: argocdLogo },
+  { name: "GitLab", logo: gitlabLogo },
+  { name: "AWS", logo: awsSvg },
+  { name: "Azure", logo: azureSvg },
+  { name: "Google Cloud", logo: gcpLogo },
+  { name: "Jenkins", logo: jenkinsLogo },
+  { name: "GitHub Actions", logo: githubSvg },
+  { name: "Grafana", logo: grafanaLogo },
+  { name: "Prometheus", logo: prometheusLogo },
 ];
 
 const DevOpsServices = () => {
@@ -90,24 +88,7 @@ const DevOpsServices = () => {
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <motion.div
-            animate={{ 
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute top-20 right-20 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{ 
-              scale: [1.2, 1, 1.2],
-              rotate: [360, 180, 0]
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-20 left-20 w-96 h-96 bg-coral/20 rounded-full blur-3xl"
-          />
-        </div>
+        <DevOpsHeroGraphics />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -115,14 +96,6 @@ const DevOpsServices = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 mb-6"
-            >
-              <Workflow className="w-10 h-10 text-white" />
-            </motion.div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               DevOps{" "}
               <span className="text-gradient">Services</span>
@@ -213,15 +186,11 @@ const DevOpsServices = () => {
                   whileHover={{ scale: 1.1, y: -5 }}
                   className="flex-shrink-0 flex flex-col items-center gap-3 p-6 rounded-xl bg-background border border-border hover:border-primary/50 hover:shadow-xl transition-all cursor-default min-w-[140px]"
                 >
-                  {tool.isImage ? (
-                    <img 
-                      src={tool.logo as string} 
-                      alt={tool.name} 
-                      className="w-12 h-12 object-contain"
-                    />
-                  ) : (
-                    <tool.Logo className="w-12 h-12" />
-                  )}
+                  <img 
+                    src={tool.logo} 
+                    alt={tool.name} 
+                    className="w-12 h-12 object-contain"
+                  />
                   <span className="font-medium text-foreground text-sm text-center whitespace-nowrap">{tool.name}</span>
                 </motion.div>
               ))}
@@ -302,15 +271,11 @@ const DevOpsServices = () => {
                 whileHover={{ scale: 1.1, y: -8, rotate: 5 }}
                 className="flex flex-col items-center gap-3 p-6 rounded-xl bg-background border border-border hover:border-primary/50 hover:shadow-2xl transition-all cursor-default group"
               >
-                {tool.isImage ? (
-                  <img 
-                    src={tool.logo as string} 
-                    alt={tool.name} 
-                    className="w-14 h-14 object-contain group-hover:scale-110 transition-transform"
-                  />
-                ) : (
-                  <tool.Logo className="w-14 h-14 group-hover:scale-110 transition-transform" />
-                )}
+                <img 
+                  src={tool.logo} 
+                  alt={tool.name} 
+                  className="w-14 h-14 object-contain group-hover:scale-110 transition-transform"
+                />
                 <span className="font-medium text-foreground text-sm text-center">{tool.name}</span>
               </motion.div>
             ))}

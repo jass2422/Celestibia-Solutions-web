@@ -3,24 +3,23 @@ import { Link } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CTA } from "@/components/home/CTA";
-import { 
-  Cloud, 
-  Server, 
-  ArrowRight, 
+import {
+  Server,
+  ArrowRight,
   CheckCircle,
   Zap,
   Shield,
   TrendingUp,
-  Database,
-  RefreshCw,
-  Settings,
+  Globe,
+  Lock,
+  Cpu,
+  Activity,
   Layers,
-  HardDrive
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FloatingIcons, GradientOrbs, AnimatedNodes } from "@/components/graphics/FloatingIcons";
-import { TechIllustration } from "@/components/graphics/TechIllustration";
-import { AnimatedBackground } from "@/components/graphics/AnimatedBackground";
+import { FloatingIcons, GradientOrbs, AnimatedNodes, CircuitLines } from "@/components/graphics/FloatingIcons";
+import { FloatingTechOrbs, ServiceGridBackground } from "@/components/graphics/ServiceGraphics";
+import { ServiceIconBox } from "@/components/icons/ServiceIcons";
 
 // Import original logos
 import awsSvg from "@/assets/logos/aws.svg";
@@ -31,37 +30,41 @@ const features = [
   {
     icon: Server,
     title: "Cloud Infrastructure Managed Services",
-    description: "Proactive management and monitoring of your cloud infrastructure, ensuring seamless performance and cost efficiency."
+    description:
+      "Proactive management and monitoring of your cloud infrastructure, ensuring seamless performance and cost efficiency.",
   },
   {
-    icon: RefreshCw,
+    icon: Globe,
     title: "Cloud Migration",
-    description: "Smooth, secure, and optimized migration of your workloads to the cloud, minimizing downtime and maximizing performance."
+    description:
+      "Smooth, secure, and optimized migration of your workloads to the cloud, minimizing downtime and maximizing performance.",
   },
   {
-    icon: Settings,
+    icon: Cpu,
     title: "Cloud Architecture and Design",
-    description: "Designing scalable, secure, and high-performance cloud architectures tailored to your business needs."
+    description:
+      "Designing scalable, secure, and high-performance cloud architectures tailored to your business needs.",
   },
   {
-    icon: Shield,
+    icon: Lock,
     title: "Cloud Security and Governance",
-    description: "Robust security and governance frameworks to safeguard your data and maintain compliance."
+    description: "Robust security and governance frameworks to safeguard your data and maintain compliance.",
   },
   {
     icon: TrendingUp,
     title: "Cost Optimization",
-    description: "Identifying and eliminating inefficiencies to reduce cloud spend without compromising performance."
+    description: "Identifying and eliminating inefficiencies to reduce cloud spend without compromising performance.",
   },
   {
-    icon: Database,
+    icon: Activity,
     title: "Disaster Recovery (DR) & Business Continuity Planning (BCP)",
-    description: "Comprehensive solutions for data backup, disaster recovery, and business continuity on the cloud."
+    description: "Comprehensive solutions for data backup, disaster recovery, and business continuity on the cloud.",
   },
   {
     icon: Layers,
     title: "Environment Management (Dev, UAT, Prod)",
-    description: "Structured setup of isolated environments with promotion pipelines and config separation for SDLC workflows."
+    description:
+      "Structured setup of isolated environments with promotion pipelines and config separation for SDLC workflows.",
   },
 ];
 
@@ -84,20 +87,31 @@ const CloudServices = () => {
   return (
     <main className="min-h-screen">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-hero relative overflow-hidden">
         <GradientOrbs />
         <FloatingIcons count={10} />
         <AnimatedNodes />
+        <CircuitLines className="opacity-30" />
+        <FloatingTechOrbs count={4} />
+        <ServiceGridBackground />
         <div className="absolute inset-0 opacity-10">
           <motion.div
-            animate={{ 
+            animate={{
               scale: [1, 1.2, 1],
-              rotate: [0, 180, 360]
+              rotate: [0, 180, 360],
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             className="absolute top-20 right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              x: [0, 50, 0],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-20 left-20 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl"
           />
         </div>
         <div className="container mx-auto px-4 relative z-10">
@@ -107,16 +121,12 @@ const CloudServices = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 mb-6">
-              <Cloud className="w-10 h-10 text-white" />
-            </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Core Cloud{" "}
-              <span className="text-gradient">Services</span>
+              Cloud <span className="text-gradient">Services</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              We provide a full suite of cloud services across major platforms like AWS, Azure, and GCP. 
-              Accelerate your digital transformation with our comprehensive cloud expertise.
+              We provide a full suite of cloud services across major platforms like AWS, Azure, and GCP. Accelerate your
+              digital transformation with our comprehensive cloud expertise.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="gradient" size="lg" asChild>
@@ -142,9 +152,7 @@ const CloudServices = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              Multi-Cloud Expertise
-            </h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Multi-Cloud Expertise</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               We work with all major cloud providers to deliver the best solutions for your business
             </p>
@@ -161,9 +169,9 @@ const CloudServices = () => {
                 whileHover={{ scale: 1.02, y: -5 }}
                 className="p-8 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-xl transition-all text-center group"
               >
-                <img 
-                  src={provider.logo} 
-                  alt={provider.name} 
+                <img
+                  src={provider.logo}
+                  alt={provider.name}
                   className="w-16 h-16 mx-auto mb-4 object-contain group-hover:scale-110 transition-transform"
                 />
                 <h3 className="font-heading text-xl font-bold mb-2">{provider.name}</h3>
@@ -183,9 +191,7 @@ const CloudServices = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              Our Cloud Expertise
-            </h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Our Cloud Expertise</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               End-to-end cloud solutions tailored to your business needs
             </p>
@@ -216,17 +222,11 @@ const CloudServices = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                Why Choose Our Cloud Services?
-              </h2>
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Why Choose Our Cloud Services?</h2>
               <p className="text-muted-foreground text-lg mb-8">
-                We bring deep expertise across all major cloud platforms, helping you 
-                achieve faster time-to-market, reduced costs, and improved scalability.
+                We bring deep expertise across all major cloud platforms, helping you achieve faster time-to-market,
+                reduced costs, and improved scalability.
               </p>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
@@ -264,7 +264,7 @@ const CloudServices = () => {
                     <div className="text-sm text-muted-foreground">Uptime SLA</div>
                   </div>
                   <div className="text-center p-6 rounded-xl bg-background">
-                    <Cloud className="w-8 h-8 text-primary mx-auto mb-2" />
+                    <ServiceIconBox service="cloud" size="sm" className="mx-auto mb-2" />
                     <div className="text-3xl font-bold text-foreground">500+</div>
                     <div className="text-sm text-muted-foreground">Migrations</div>
                   </div>

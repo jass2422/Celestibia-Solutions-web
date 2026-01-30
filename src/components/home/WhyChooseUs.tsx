@@ -7,12 +7,14 @@ const reasons = [
   {
     icon: Rocket,
     title: "Speed to Market",
-    description: "Accelerate your digital transformation with our agile methodologies and rapid deployment capabilities.",
+    description:
+      "Accelerate your digital transformation with our agile methodologies and rapid deployment capabilities.",
   },
   {
     icon: Users,
     title: "Expert Team",
-    description: "Our certified engineers bring deep expertise in AWS, Azure, GCP, Kubernetes, and modern DevOps practices.",
+    description:
+      "Our certified engineers bring deep expertise in AWS, Azure, GCP, Kubernetes, and modern DevOps practices.",
   },
   {
     icon: Award,
@@ -37,8 +39,8 @@ const reasons = [
 ];
 
 export const WhyChooseUs = () => {
-  const { getVariantValue } = useABTest('why_choose_headline');
-  const headline = getVariantValue() || 'Technology Should Simplify Business';
+  const { getVariantValue } = useABTest("why_choose_headline");
+  const headline = getVariantValue() || "Technology Should Simplify Business";
 
   return (
     <section className="py-24 bg-background relative overflow-hidden">
@@ -47,14 +49,14 @@ export const WhyChooseUs = () => {
       <div className="hidden lg:block">
         <ConnectedNetwork className="opacity-40" />
       </div>
-      
+
       {/* Gradient orbs */}
-      <motion.div 
+      <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
         transition={{ duration: 10, repeat: Infinity }}
-        className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-br from-[#F97316]/20 to-[#8B5CF6]/10 rounded-full blur-[100px]" 
+        className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-br from-[#F97316]/20 to-[#8B5CF6]/10 rounded-full blur-[100px]"
       />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
@@ -64,27 +66,20 @@ export const WhyChooseUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-sm font-medium text-foreground mb-4">
-              Why Choose Us
-            </span>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              {headline.includes('Simplify') ? (
+              {headline.includes("Simplify") ? (
                 <>
-                  Technology Should{" "}
-                  <span className="text-gradient">Simplify</span>{" "}
-                  Business
+                  Technology Should <span className="text-gradient">Simplify</span> Business
                 </>
               ) : (
                 <>
-                  Why{" "}
-                  <span className="text-gradient">Partner</span>{" "}
-                  With Us?
+                  Why <span className="text-gradient">Partner</span> With Us?
                 </>
               )}
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              At Celestibia Solutions, we believe in solutions that scale with growth, 
-              innovation that keeps you ahead, and client success as our ultimate achievement.
+              At Celestibia Solutions, we believe in solutions that scale with growth, innovation that keeps you ahead,
+              and client success as our ultimate achievement.
             </p>
 
             {/* Key Beliefs */}
@@ -133,9 +128,7 @@ export const WhyChooseUs = () => {
                   <reason.icon className="w-6 h-6 text-white drop-shadow-md" />
                 </div>
                 <h3 className="font-heading font-bold text-lg mb-2">{reason.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {reason.description}
-                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{reason.description}</p>
               </motion.div>
             ))}
           </motion.div>
