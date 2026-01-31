@@ -68,16 +68,8 @@ export const Partners = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-<<<<<<< HEAD
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">{headline}</h2>
           <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-=======
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 mb-6">
-            <Link2 className="w-7 h-7 text-primary" />
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">{headline}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
->>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
             Recognized for technical excellence and certified expertise across major cloud platforms.
           </p>
         </motion.div>
@@ -98,11 +90,7 @@ export const Partners = () => {
               >
                 <img src={partner.logo} alt={partner.name} className="w-14 h-14 md:w-16 md:h-16 object-contain" />
               </motion.div>
-<<<<<<< HEAD
               <h3 className="font-semibold text-white mb-1 text-sm">{partner.name}</h3>
-=======
-              <h3 className="font-semibold text-foreground mb-1 text-sm">{partner.name}</h3>
->>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
             </motion.div>
           ))}
         </div>

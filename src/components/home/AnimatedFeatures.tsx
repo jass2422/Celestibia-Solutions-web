@@ -87,12 +87,7 @@ export const AnimatedFeatures = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-<<<<<<< HEAD
-        
-
-        {/* Hexagonal Grid Layout */}
-        
-=======
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +102,7 @@ export const AnimatedFeatures = () => {
           </p>
         </motion.div>
 
-        {/* Hexagonal Grid Layout */}
+        {/* Capabilities Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
           {capabilities.map((cap, index) => (
             <motion.div
@@ -142,7 +137,6 @@ export const AnimatedFeatures = () => {
             </motion.div>
           ))}
         </div>
->>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
 
         {/* Process Flow */}
         <motion.div

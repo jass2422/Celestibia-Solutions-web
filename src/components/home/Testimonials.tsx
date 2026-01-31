@@ -41,10 +41,6 @@ export const Testimonials = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-<<<<<<< HEAD
-          
-=======
->>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             {headline.includes("Trusted") ? (
               <>
