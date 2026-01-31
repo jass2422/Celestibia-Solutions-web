@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from "lucide-react";
 import logo from "@/assets/logo.jpeg";
 const footerLinks = {
+<<<<<<< HEAD
   services: [{
     name: "Cloud Services",
     href: "/services/cloud"
@@ -42,12 +43,65 @@ const footerLinks = {
     name: "Terms of Service",
     href: "/terms"
   }]
+=======
+  services: [
+    {
+      name: "Cloud Services",
+      href: "/services/cloud",
+    },
+    {
+      name: "DevOps",
+      href: "/services/devops",
+    },
+    {
+      name: "Data Engineering",
+      href: "/services/data-engineering",
+    },
+    {
+      name: "Security Services",
+      href: "/services/security",
+    },
+    {
+      name: "AI & ML",
+      href: "/services/ai-ml",
+    },
+  ],
+  company: [
+    {
+      name: "About Us",
+      href: "/about",
+    },
+    {
+      name: "Case Studies",
+      href: "/case-studies",
+    },
+    {
+      name: "Blog",
+      href: "/blog",
+    },
+    {
+      name: "Contact",
+      href: "/contact",
+    },
+  ],
+  resources: [
+    {
+      name: "Privacy Policy",
+      href: "/privacy",
+    },
+    {
+      name: "Terms of Service",
+      href: "/terms",
+    },
+  ],
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
 };
 export const Footer = forwardRef<HTMLElement>((_, ref) => {
-  return <footer ref={ref} className="bg-gradient-footer text-primary-foreground relative overflow-hidden">
+  return (
+    <footer ref={ref} className="bg-gradient-footer text-primary-foreground relative overflow-hidden">
       {/* Decorative glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-coral/40 to-transparent" />
-      
+
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Section */}
@@ -55,13 +109,25 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
             <Link to="/" className="flex items-center gap-3 mb-6">
               <img src={logo} alt="Celestibia Solutions" className="h-14 w-auto rounded-lg bg-primary-foreground p-1" />
             </Link>
+<<<<<<< HEAD
             <p className="text-primary-foreground/80 mb-6 max-w-sm">Innovative cloud solutions for a connected world.</p>
+=======
+            <p className="text-primary-foreground/80 mb-6 max-w-sm">
+              Innovative cloud solutions for a connected world.
+            </p>
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
             <div className="space-y-3">
-              <a href="mailto:info@celestibia.com" className="flex items-center gap-3 text-primary-foreground/80 hover:text-coral transition-colors">
+              <a
+                href="mailto:info@celestibia.com"
+                className="flex items-center gap-3 text-primary-foreground/80 hover:text-coral transition-colors"
+              >
                 <Mail className="w-5 h-5" />
                 info@celestibia.com
               </a>
-              <a href="tel:+918308535810" className="flex items-center gap-3 text-primary-foreground/80 hover:text-coral transition-colors">
+              <a
+                href="tel:+918308535810"
+                className="flex items-center gap-3 text-primary-foreground/80 hover:text-coral transition-colors"
+              >
                 <Phone className="w-5 h-5" />
                 +91 8308535810
               </a>
@@ -76,11 +142,13 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
           <div>
             <h3 className="font-heading font-bold text-lg mb-6">Services</h3>
             <ul className="space-y-3">
-              {footerLinks.services.map(link => <li key={link.name}>
+              {footerLinks.services.map((link) => (
+                <li key={link.name}>
                   <Link to={link.href} className="text-primary-foreground/70 hover:text-coral transition-colors">
                     {link.name}
                   </Link>
-                </li>)}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -88,11 +156,13 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
           <div>
             <h3 className="font-heading font-bold text-lg mb-6">Company</h3>
             <ul className="space-y-3">
-              {footerLinks.company.map(link => <li key={link.name}>
+              {footerLinks.company.map((link) => (
+                <li key={link.name}>
                   <Link to={link.href} className="text-primary-foreground/70 hover:text-coral transition-colors">
                     {link.name}
                   </Link>
-                </li>)}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -100,22 +170,35 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
           <div>
             <h3 className="font-heading font-bold text-lg mb-6">Resources</h3>
             <ul className="space-y-3">
-              {footerLinks.resources.map(link => <li key={link.name}>
+              {footerLinks.resources.map((link) => (
+                <li key={link.name}>
                   <Link to={link.href} className="text-primary-foreground/70 hover:text-coral transition-colors">
                     {link.name}
                   </Link>
-                </li>)}
+                </li>
+              ))}
             </ul>
 
             {/* Social Links */}
             <div className="flex items-center gap-4 mt-8">
-              <a href="https://www.linkedin.com/company/celestibia-solutions-pvt/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-coral transition-colors">
+              <a
+                href="https://www.linkedin.com/company/celestibia-solutions-pvt/?originalSubdomain=in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-coral transition-colors"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-coral transition-colors">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-coral transition-colors"
+              >
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-coral transition-colors">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-coral transition-colors"
+              >
                 <Github className="w-5 h-5" />
               </a>
             </div>
@@ -128,15 +211,17 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
             © 2026 Celestibia Solutions Pvt. Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <Link to="/admin" className="text-primary-foreground/40 hover:text-primary-foreground/60 text-xs transition-colors">
+            <Link
+              to="/admin"
+              className="text-primary-foreground/40 hover:text-primary-foreground/60 text-xs transition-colors"
+            >
               Admin
             </Link>
-            <p className="text-primary-foreground/60 text-sm">
-              Shaping the future, one solution at a time.
-            </p>
+            <p className="text-primary-foreground/60 text-sm">Shaping the future, one solution at a time.</p>
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 });
-Footer.displayName = 'Footer';
+Footer.displayName = "Footer";

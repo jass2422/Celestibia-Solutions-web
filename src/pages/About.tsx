@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+<<<<<<< HEAD
 import { CTA } from "@/components/home/CTA";
 import { Code2, Cloud, Smartphone, Zap, Lock, CheckCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -19,6 +20,36 @@ import terraformSvg from "@/assets/logos/terraform.svg";
 import helmSvg from "@/assets/logos/helm.svg";
 import ansibleSvg from "@/assets/logos/ansible.svg";
 import dockerSvg from "@/assets/logos/docker.svg";
+=======
+import { CheckCircle, Target, Eye, Heart, Lightbulb, TrendingUp, Award, Users } from "lucide-react";
+import {
+  IsometricIcons,
+  HexagonPattern,
+  WaveGradient,
+  ConnectedNetwork,
+  CircuitBoard,
+} from "@/components/graphics/InfraCloudStyle";
+
+const values = [
+  {
+    icon: Target,
+    title: "Mission",
+    description:
+      "To help organizations leverage technology to unlock efficiency, agility, and new possibilities. We don't just build products — we build partnerships, trust, and long-lasting value.",
+  },
+  {
+    icon: Eye,
+    title: "Vision",
+    description:
+      "To be the most trusted partner for enterprises embarking on their digital transformation journey, shaping the future one solution at a time.",
+  },
+  {
+    icon: Heart,
+    title: "Values",
+    description: "Innovation, Excellence, Integrity, and Client Success drive everything we do at Celesibia Solutions.",
+  },
+];
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
 
 const beliefs = [
   "Technology should simplify business",
@@ -55,6 +86,7 @@ const services = [
   },
 ];
 
+<<<<<<< HEAD
 const devopsTools = [
   {
     name: "Kubernetes",
@@ -140,6 +172,14 @@ const devopsTools = [
     logo: argocdLogo,
     description: "GitOps continuous delivery",
   },
+=======
+const whatWeDo = [
+  "Custom Software Development",
+  "Cloud & DevOps Solutions",
+  "Web & Mobile App Engineering",
+  "Automation & Process Optimization",
+  "Secure, Reliable & High-Performance Systems",
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
 ];
 
 const AboutUsPage = () => {
@@ -148,6 +188,7 @@ const AboutUsPage = () => {
       <Header />
 
       {/* Hero Section */}
+<<<<<<< HEAD
       <section className="pt-24 pb-32 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 relative overflow-hidden">
         {/* Animated background elements - subtle */}
         <motion.div
@@ -173,6 +214,40 @@ const AboutUsPage = () => {
             delay: 2,
           }}
         />
+=======
+      <section className="pt-32 pb-24 bg-gradient-hero relative overflow-hidden">
+        {/* InfraCloud-style backgrounds */}
+        <HexagonPattern />
+        <IsometricIcons />
+
+        {/* Animated orbs - Enhanced */}
+        <motion.div
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.2, 0.4, 0.2],
+            x: [0, 30, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-10 right-10 w-[500px] h-[500px] bg-gradient-to-br from-coral/40 to-purple/30 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{
+            scale: [1.3, 1, 1.3],
+            opacity: [0.2, 0.35, 0.2],
+            y: [0, -20, 0],
+          }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-gradient-to-br from-purple/40 to-cyan-500/30 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.15, 0.3, 0.15],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-gradient-to-br from-orange/30 to-coral/20 rounded-full blur-[100px]"
+        />
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -181,11 +256,21 @@ const AboutUsPage = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
+<<<<<<< HEAD
             <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6 leading-tight text-slate-900">
               Welcome to Celestibia Solutions
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed mb-8">
               Where innovation meets precision, and ideas transform into impactful digital solutions.
+=======
+
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Where Innovation Meets <span className="text-gradient">Precision</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Welcome to Celesibia Solutions — where innovation meets precision, and ideas transform into impactful
+              digital solutions.
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
             </p>
             <Button variant="gradient" size="lg" asChild>
               <Link to="/contact" className="flex items-center gap-2">
@@ -197,8 +282,82 @@ const AboutUsPage = () => {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* About Section */}
       <section className="py-24 bg-white">
+=======
+      {/* About Content */}
+      <section className="py-20 bg-card">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
+                We Blend Creativity with <span className="text-gradient">Technical Excellence</span>
+              </h2>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                At Celesibia Solutions, we are driven by a passion for empowering businesses through smart technology,
+                seamless design, and scalable engineering. We blend creativity with technical excellence to deliver
+                software solutions that are not just functional, but future-ready.
+              </p>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                Our team of expert developers, problem-solvers, and strategists work closely with clients to turn
+                challenges into opportunities. Whether it's building intuitive web and mobile applications, modernizing
+                legacy systems, enhancing cloud capabilities, or automating workflows — we deliver solutions with speed,
+                security, and simplicity at the core.
+              </p>
+              <div className="space-y-4">
+                {whatWeDo.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center gap-3 group"
+                  >
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-coral to-orange flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                      <CheckCircle className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="font-medium text-foreground">{item}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-2 gap-6"
+            >
+              {team.map((member, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="p-6 rounded-2xl bg-background border border-border text-center hover:border-coral/30 hover:shadow-xl transition-all"
+                >
+                  <div className="text-4xl font-bold text-gradient mb-2">{member.count}</div>
+                  <div className="text-muted-foreground">{member.role}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* What We Believe */}
+      <section className="py-20 bg-background">
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -206,6 +365,7 @@ const AboutUsPage = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
+<<<<<<< HEAD
             <p className="text-xl text-slate-700 leading-relaxed mb-8">
               At Celestibia Solutions, we are driven by a passion for empowering businesses through smart technology, seamless design, and scalable engineering. We blend creativity with technical excellence to deliver software solutions that are not just functional, but future-ready.
             </p>
@@ -234,6 +394,14 @@ const AboutUsPage = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+=======
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              What We <span className="text-gradient">Believe</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
             {beliefs.map((belief, index) => (
               <motion.div
                 key={index}
@@ -254,6 +422,7 @@ const AboutUsPage = () => {
       {/* What We Do Section - Animated Cards Moving Left to Right */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
+<<<<<<< HEAD
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -323,6 +492,26 @@ const AboutUsPage = () => {
                 );
               })}
             </motion.div>
+=======
+          <div className="grid md:grid-cols-3 gap-8">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="p-8 rounded-2xl bg-background border border-border text-center hover:shadow-xl transition-all"
+              >
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-coral to-orange flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <value.icon className="w-8 h-8 text-white drop-shadow-md" />
+                </div>
+                <h3 className="font-heading text-2xl font-bold mb-4">{value.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+              </motion.div>
+            ))}
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
           </div>
 
           {/* Gradient fade effect */}
@@ -331,6 +520,7 @@ const AboutUsPage = () => {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* DevOps Tools Section */}
       <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
         {/* Background animations */}
@@ -343,6 +533,17 @@ const AboutUsPage = () => {
           transition={{
             duration: 8,
             repeat: Infinity,
+=======
+      {/* Tagline Section */}
+      <section className="py-20 bg-gradient-hero relative overflow-hidden">
+        <CircuitBoard />
+        <WaveGradient />
+
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.35, 0.2],
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
           }}
         />
 
@@ -353,6 +554,7 @@ const AboutUsPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+<<<<<<< HEAD
             <h2 className="font-heading text-4xl font-bold mb-4">
               DevOps & Cloud Technologies
             </h2>
@@ -457,6 +659,12 @@ const AboutUsPage = () => {
             <p className="text-2xl font-bold text-slate-900">
               Let's create something extraordinary together. 🚀
             </p>
+=======
+            <p className="text-xl text-muted-foreground mb-4">Let's create something extraordinary together. 🚀</p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold">
+              <span className="text-gradient">Celesibia Solutions</span> — Shaping the future, one solution at a time.
+            </h2>
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
           </motion.div>
         </div>
       </section>
@@ -516,4 +724,8 @@ const AboutUsPage = () => {
   );
 };
 
+<<<<<<< HEAD
 export default AboutUsPage;
+=======
+export default About;
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6

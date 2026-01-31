@@ -8,8 +8,11 @@ import { Button } from "@/components/ui/button";
 import { CloudHeroGraphics } from "@/components/graphics/HeroGraphics";
 import { CaseStudyIcon } from "@/components/icons/CaseStudyIcons";
 import { IndustryIcon } from "@/components/icons/IndustryIcons";
+<<<<<<< HEAD
 import { useState } from "react";
 import challengeIcon from "@/assets/icons/challenge.png";
+=======
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
 
 const caseStudies = [
   {
@@ -101,7 +104,11 @@ const caseStudies = [
     bgColor: "from-purple-500 to-indigo-600",
     bgColorHex: "#a855f7",
     color: "from-slate-600 to-slate-400",
+<<<<<<< HEAD
     accentColor: "purple",
+=======
+    accentColor: "slate",
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   },
   {
     iconKey: "healthcare",
@@ -124,7 +131,11 @@ const caseStudies = [
     bgColor: "from-cyan-500 to-blue-500",
     bgColorHex: "#06b6d4",
     color: "from-teal-600 to-cyan-400",
+<<<<<<< HEAD
     accentColor: "cyan",
+=======
+    accentColor: "teal",
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   },
   {
     iconKey: "saas",
@@ -147,7 +158,11 @@ const caseStudies = [
     bgColor: "from-pink-500 to-rose-600",
     bgColorHex: "#ec4899",
     color: "from-purple-600 to-violet-400",
+<<<<<<< HEAD
     accentColor: "pink",
+=======
+    accentColor: "purple",
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   },
 ];
 
@@ -473,7 +488,11 @@ const CaseStudiesPage = () => {
               <Target className="w-4 h-4" />
               <span className="text-sm font-medium">Proven Track Record</span>
             </motion.div>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Real Results, <span className="text-gradient">Real Impact</span>
             </h1>
@@ -535,9 +554,122 @@ const CaseStudiesPage = () => {
             </p>
           </motion.div>
 
+<<<<<<< HEAD
           <div className="grid grid-cols-1 gap-4 lg:gap-6">
             {caseStudies.map((study, index) => (
               <CaseStudyCard key={index} study={study} index={index} />
+=======
+          <div className="grid gap-8 lg:gap-12">
+            {caseStudies.map((study, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="bg-card rounded-3xl border border-border overflow-hidden hover:border-coral/40 hover:shadow-2xl transition-all duration-500">
+                  {/* Header with icon and title */}
+                  <div className={`bg-gradient-to-r ${study.color} p-6 md:p-8`}>
+                    <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white/95 flex items-center justify-center shadow-xl flex-shrink-0"
+                      >
+                        {study.iconType === "casestudy" ? (
+                          <CaseStudyIcon caseStudy={study.iconKey as any} size="lg" />
+                        ) : (
+                          <IndustryIcon industry={study.iconKey as any} size="lg" />
+                        )}
+                      </motion.div>
+                      <div className="text-white">
+                        <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-xs font-medium mb-2">
+                          {study.industry}
+                        </span>
+                        <h2 className="font-heading text-2xl md:text-3xl font-bold mb-1">{study.title}</h2>
+                        <p className="text-white/80">Client: {study.client}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 md:p-8">
+                    <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+                      {/* Challenge */}
+                      <motion.div
+                        whileHover={{ y: -5 }}
+                        className="p-6 rounded-2xl bg-muted/50 border border-border hover:border-coral/30 transition-all"
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-coral to-orange flex items-center justify-center">
+                            <Target className="w-5 h-5 text-white" />
+                          </div>
+                          <h3 className="font-heading font-bold text-lg text-coral">Challenge</h3>
+                        </div>
+                        <p className="text-muted-foreground leading-relaxed">{study.challenge}</p>
+                      </motion.div>
+
+                      {/* Solution */}
+                      <motion.div
+                        whileHover={{ y: -5 }}
+                        className="p-6 rounded-2xl bg-muted/50 border border-border hover:border-coral/30 transition-all"
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-coral to-orange flex items-center justify-center">
+                            <Lightbulb className="w-5 h-5 text-white" />
+                          </div>
+                          <h3 className="font-heading font-bold text-lg text-coral">Solution</h3>
+                        </div>
+                        <div className="space-y-3">
+                          {study.solution.map((item, idx) => (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ delay: idx * 0.1 }}
+                              className="flex items-start gap-3"
+                            >
+                              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-coral to-orange flex items-center justify-center mt-0.5">
+                                <CheckCircle className="w-3.5 h-3.5 text-white" />
+                              </div>
+                              <span className="text-muted-foreground text-sm">{item}</span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+
+                      {/* Results */}
+                      <motion.div
+                        whileHover={{ y: -5 }}
+                        className="p-6 rounded-2xl bg-gradient-to-br from-coral/10 to-orange/10 border border-coral/20 hover:border-coral/40 transition-all"
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-coral to-orange flex items-center justify-center">
+                            <TrendingUp className="w-5 h-5 text-white" />
+                          </div>
+                          <h3 className="font-heading font-bold text-lg text-coral">Results</h3>
+                        </div>
+                        <div className="space-y-4">
+                          {study.results.map((result, idx) => (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: idx * 0.1 }}
+                              className="flex items-center gap-3"
+                            >
+                              <span className="text-2xl md:text-3xl font-bold text-gradient">{result.metric}</span>
+                              <span className="text-muted-foreground text-sm">{result.label}</span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
             ))}
           </div>
 

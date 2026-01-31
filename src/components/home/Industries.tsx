@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useABTest } from "@/hooks/useABTest";
 import { CircuitBoard, WaveGradient } from "@/components/graphics/InfraCloudStyle";
 import { IndustryIcon } from "@/components/icons/IndustryIcons";
+<<<<<<< HEAD
 import { useState } from "react";
 
 interface IndustryDetails {
@@ -51,10 +52,18 @@ const industriesData = [
         { metric: "Release Cycles", value: "Weekly → Daily" },
       ],
     },
+=======
+
+const industries = [
+  {
+    iconKey: "banking",
+    name: "Banking & Finance",
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   },
   {
     iconKey: "healthcare",
     name: "Healthcare",
+<<<<<<< HEAD
     color: "from-red-500 to-red-600",
     bgColor: "#dc2626",
     details: {
@@ -89,10 +98,17 @@ const industriesData = [
         { metric: "Infrastructure Cost", value: "-35%" },
       ],
     },
+=======
+  },
+  {
+    iconKey: "ecommerce",
+    name: "E-Commerce & Retail",
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   },
   {
     iconKey: "manufacturing",
     name: "Manufacturing",
+<<<<<<< HEAD
     color: "from-amber-600 to-amber-700",
     bgColor: "#b45309",
     details: {
@@ -108,10 +124,13 @@ const industriesData = [
         { metric: "Waste Reduction", value: "22%" },
       ],
     },
+=======
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   },
   {
     iconKey: "logistics",
     name: "Logistics",
+<<<<<<< HEAD
     color: "from-cyan-500 to-cyan-600",
     bgColor: "#0891b2",
     details: {
@@ -127,10 +146,13 @@ const industriesData = [
         { metric: "Forecast Accuracy", value: "+34%" },
       ],
     },
+=======
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   },
   {
     iconKey: "edtech",
     name: "EdTech",
+<<<<<<< HEAD
     color: "from-indigo-500 to-indigo-600",
     bgColor: "#4f46e5",
     details: {
@@ -146,10 +168,13 @@ const industriesData = [
         { metric: "System Uptime", value: "99.95%" },
       ],
     },
+=======
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   },
   {
     iconKey: "government",
     name: "Government",
+<<<<<<< HEAD
     color: "from-slate-700 to-slate-800",
     bgColor: "#3f3f46",
     details: {
@@ -165,6 +190,12 @@ const industriesData = [
         { metric: "Cost Savings", value: "38%" },
       ],
     },
+=======
+  },
+  {
+    iconKey: "travel",
+    name: "Travel & Hospitality",
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   },
 ];
 
@@ -310,7 +341,11 @@ const IndustryCard: React.FC<IndustryCardProps> = ({ industry, index }) => {
 export const Industries = () => {
   const { getVariantValue } = useABTest("industries_headline");
   const headline = getVariantValue() || "Transforming Industries with Cloud Innovation";
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
   return (
     <section className="py-24 bg-gradient-warm text-primary-foreground overflow-hidden relative">
       {/* InfraCloud-style backgrounds */}
@@ -369,9 +404,24 @@ export const Industries = () => {
                 </span>
               </>
             ) : (
+<<<<<<< HEAD
               <>{headline}</>
             )}
           </h2>
+=======
+              <>
+                Industries We{" "}
+                <span className="bg-gradient-to-r from-coral via-orange to-coral-light bg-clip-text text-transparent">
+                  Empower
+                </span>
+              </>
+            )}
+          </h2>
+          <p className="text-lg text-primary-foreground/70">
+            Our solutions power digital transformation across diverse sectors, from financial services to healthcare and
+            beyond.
+          </p>
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
         </motion.div>
 
         {/* Industries Grid */}
@@ -390,8 +440,40 @@ export const Industries = () => {
           }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
         >
+<<<<<<< HEAD
           {industriesData.map((industry, index) => (
             <IndustryCard key={industry.iconKey} industry={industry} index={index} />
+=======
+          {industries.map((industry, index) => (
+            <motion.div
+              key={index}
+              initial={{
+                opacity: 0,
+                scale: 0.9,
+              }}
+              whileInView={{
+                opacity: 1,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.05,
+              }}
+              whileHover={{
+                scale: 1.05,
+                y: -5,
+              }}
+              className="group p-6 md:p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 hover:bg-primary-foreground/10 hover:border-coral/30 transition-all duration-300 cursor-pointer flex flex-col items-center text-center"
+            >
+              <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
+                <IndustryIcon industry={industry.iconKey as any} size="lg" />
+              </div>
+              <h3 className="font-heading font-bold text-lg">{industry.name}</h3>
+            </motion.div>
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
           ))}
         </motion.div>
       </div>

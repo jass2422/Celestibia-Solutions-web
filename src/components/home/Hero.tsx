@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Cloud, Shield, Zap, Server, Database, GitBranch, Code, Cpu, Container, Network, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useABTest } from "@/hooks/useABTest";
+<<<<<<< HEAD
 import { IsometricIcons, CircuitBoard, OrbitRings, WaveGradient } from "@/components/graphics/InfraCloudStyle";
 import heroVideo from "@/assets/illustrations/home-page.mp4";
+=======
+import { VideoBackground, Floating3DShapes } from "@/components/graphics/VideoBackground";
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
 
 // InfraCloud-style floating icons with colors
 const floatingIcons = [
@@ -31,6 +35,7 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Video Background */}
+<<<<<<< HEAD
       <video
         autoPlay
         muted
@@ -44,6 +49,19 @@ export const Hero = () => {
 
       {/* Dark Overlay for better text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/70" />
+=======
+      <VideoBackground
+        src="/videos/home_pager_hero_video.mp4"
+        overlay="gradient"
+        opacity={0.5}
+      />
+
+      {/* 3D Floating Shapes */}
+      <Floating3DShapes />
+
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
 
       {/* InfraCloud-style Floating Icons */}
       {floatingIcons.map((item, index) => (
@@ -56,7 +74,7 @@ export const Hero = () => {
           }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ 
-            opacity: [0.5, 0.8, 0.5],
+            opacity: [0.4, 0.7, 0.4],
             y: [0, -25, 0],
             rotate: [0, 5, -5, 0],
           }}
@@ -67,11 +85,11 @@ export const Hero = () => {
           }}
         >
           <div 
-            className="p-3 rounded-xl backdrop-blur-sm shadow-lg"
+            className="p-3 rounded-xl backdrop-blur-md shadow-lg preserve-3d"
             style={{ 
-              background: `linear-gradient(135deg, ${item.color}20, ${item.color}40)`,
-              border: `1px solid ${item.color}50`,
-              boxShadow: `0 8px 32px ${item.color}30`,
+              background: `linear-gradient(135deg, ${item.color}15, ${item.color}30)`,
+              border: `1px solid ${item.color}40`,
+              boxShadow: `0 8px 32px ${item.color}25, 0 0 20px ${item.color}15`,
             }}
           >
             <item.Icon size={item.size} style={{ color: item.color }} strokeWidth={1.5} />
@@ -79,18 +97,38 @@ export const Hero = () => {
         </motion.div>
       ))}
 
+<<<<<<< HEAD
+=======
+      {/* Gradient Orbs */}
+      <motion.div 
+        animate={{ scale: [1, 1.3, 1], opacity: [0.15, 0.3, 0.15] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-gradient-to-br from-primary/30 to-purple/20 rounded-full blur-[120px]" 
+      />
+      <motion.div 
+        animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.35, 0.2] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-gradient-to-br from-purple/30 to-cyan/20 rounded-full blur-[120px]" 
+      />
+      <motion.div 
+        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.25, 0.1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-primary/15 to-[#EC4899]/10 rounded-full blur-[150px]" 
+      />
+
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-8"
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-glow mb-8"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-coral opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-coral"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
             <span className="text-sm font-medium text-foreground">
               Trusted by leading enterprises worldwide
@@ -99,9 +137,9 @@ export const Hero = () => {
 
           {/* Main Heading */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
             onAnimationComplete={() => trackHeadlineView('view')}
             className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl text-white"
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.8)' }}
@@ -123,11 +161,16 @@ export const Hero = () => {
 
           {/* Subheading */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
+<<<<<<< HEAD
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-10 drop-shadow-lg"
             style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.9)' }}
+=======
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
           >
             We blend creativity with technical excellence to deliver software solutions 
             that are not just functional, but future-ready. From cloud migration to 
@@ -136,27 +179,31 @@ export const Hero = () => {
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button variant="hero" size="xl" asChild onClick={() => trackCtaClick('click')}>
-              <Link to="/contact" className="flex items-center gap-2">
-                {ctaText}
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="xl" asChild>
-              <Link to="/services">Explore Services</Link>
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+              <Button variant="hero" size="xl" asChild onClick={() => trackCtaClick('click')}>
+                <Link to="/contact" className="flex items-center gap-2">
+                  {ctaText}
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+              <Button variant="outline" size="xl" asChild className="glass border-primary/30 hover:bg-primary/10">
+                <Link to="/services">Explore Services</Link>
+              </Button>
+            </motion.div>
           </motion.div>
 
           {/* Stats Preview */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
           >
             {[
@@ -165,12 +212,28 @@ export const Hero = () => {
               { number: "99.9%", label: "Uptime Guarantee" },
               { number: "24/7", label: "Expert Support" },
             ].map((stat, index) => (
+<<<<<<< HEAD
               <div key={index} className="text-center drop-shadow-lg">
                 <div className="text-3xl md:text-4xl font-bold text-white mb-2" style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)' }}>
                   {stat.number}
                 </div>
                 <div className="text-sm text-white" style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.9)' }}>{stat.label}</div>
               </div>
+=======
+              <motion.div 
+                key={index} 
+                className="text-center glass rounded-xl p-4 hover-lift"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </motion.div>
+>>>>>>> f437c7adab3eae408e2f94733a40a137246acef6
             ))}
           </motion.div>
         </div>
